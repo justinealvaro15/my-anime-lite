@@ -1,7 +1,7 @@
 
 CREATE TABLE Airing(
 	year  		INT, 
-	season 		TEXT
+	season 		TEXT,
 	PRIMARY KEY (year,season)
 );
 
