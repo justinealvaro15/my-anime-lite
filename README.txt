@@ -9,3 +9,4 @@ Santos, Kenneth
 [11/13] Added genre descriptions (excluding Rated R genres)
 [11/14] Added relationship tables -- relationship, classification, created, licensed, aired
 [11/14] Revised the following tables -- anime, genre, relationship, classification, created, licensed, aired. Deleted all Rated R animes.
+[11/14] Added project.db. Run with 'sqlite3 project.db'
