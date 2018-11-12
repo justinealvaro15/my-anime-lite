@@ -7,4 +7,5 @@ Santos, Kenneth
 
 [11/12] Added entity tables -- anime, genre, studio, licensor, airing
 [11/13] Added genre descriptions (excluding Rated R genres)
-[11/13] Added relationship tables -- relationship, classification, created, licensed, aired
+[11/14] Added relationship tables -- relationship, classification, created, licensed, aired
+[11/14] Revised the following tables -- anime, genre, relationship, classification, created, licensed, aired. Deleted all Rated R animes.
