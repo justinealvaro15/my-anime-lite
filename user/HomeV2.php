@@ -1,3 +1,7 @@
+<?php
+	include_once 'db.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,14 +50,20 @@
 	</div>
 	<p id="title"> Trending Anime</p>
 		<div class="gallery">
-			<img class="gallery" alt="BNHA" src="https://images-na.ssl-images-amazon.com/images/I/91kjVOEopVL._SY606_.jpg">
-			<img class="gallery" src="https://upload.wikimedia.org/wikipedia/ru/4/41/Orange_anime.jpg">
-			<img class="gallery" src="http://www.prologue.ca/DATA/LIVRE/grande/9782505072140~v~Boruto__Naruto_next_generations__Agenda_2018-2019.jpg">
-			<img class="gallery" src="https://vignette.wikia.nocookie.net/dragonball/images/0/00/Dragon_Ball_Super_Poster.jpg">
-			<img class="gallery" src="https://images-na.ssl-images-amazon.com/images/I/91kjVOEopVL._SY606_.jpg">
-			<img class="gallery" src="https://images-na.ssl-images-amazon.com/images/I/61GI-8ZL4uL.jpg">
-			<img class="gallery" src="https://vignette.wikia.nocookie.net/trinity-seven/images/b/b2/Trinity_Seven_Anime_Poster.jpg">
-			<img class="gallery" src="http://assets-cf.gbeye.com/thumbnails/full_size_204762_1500563995.jpg">	
+			<?php 
+				$sql="SELECT poster_link FROM Anime ORDER BY score DESC LIMIT 15";
+				$result=mysqli_query($connection,$sql);
+
+				if ($result->num_rows > 0) {
+			    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				    	if()
+				        echo "<img class='gallery' src=". $row["poster_link"].">";
+				    }
+				} else {
+				    echo "0 results";
+				}
+			?>
 		</div>
 	<br><br>
 	<p id="title"> Top Airing</p>
@@ -102,3 +112,7 @@ function carousel() {
 }
 </script>
 </html>
+
+<?php
+$connection->close();
+?>
