@@ -1,5 +1,5 @@
 <?php
-	include_once 'db.php'; 
+	include_once 'connection.php'; 
 	$_SESSION['genre_name']="";
 	$_SESSION['searchkey'] ="";
 ?>
