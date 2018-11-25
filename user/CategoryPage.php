@@ -1,3 +1,6 @@
+<?php
+	include_once 'connection.php'; 
+?>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="v2.css">
@@ -17,19 +20,50 @@
 </head>
 
 <div class="sidenav">
-	<h1></h1>
 	<h2>MyAnimeLite</h2>
-	<a href=""> Link</a>
+	<a href="HomeV2.php"> Home</a>
 	<a> Link</a>
 	<a> Link</a>
-	<!--<div class="dropdown">-->
 		<a> genres: </a>
 		<div class="dropdown-content">
-			<a>Action</a><a>Adventure</a><a>Cars</a><a>Comedy</a><a>Dementia</a><a>Demons</a><a>Drama</a><a>Fantasy</a><a>Game</a>
-			<a>Historical</a><a>Horror</a><a>Josei</a><a>Kids</a><a>Magic</a><a>Martial Arts</a><a>Mecha</a><a>Military</a>
-			<a>Music</a><a>Mystery</a><a>Parody</a><a>Police</a><a>Psychological</a><a>Romance</a><a>Samurai</a><a>School</a>
-			<a>Sci-Fi</a><a>Seinen</a><a>Shoujo</a><a>Shoujo Ai</a><a>Shounen</a><a>Shounen Ai</a><a>Slice of Life</a>
-			<a>Space</a><a>Sports</a><a>Super Power</a><a>Supernatural</a><a>Thriller</a><a>Vampire</a>
+			<a href="CategoryPage.php?link=Action">Action</a>
+			<a href="CategoryPage.php?link=Adventure">Adventure</a>
+			<a href="CategoryPage.php?link=Cars">Cars</a>
+			<a href="CategoryPage.php?link=Comedy">Comedy</a>
+			<a href="CategoryPage.php?link=Dementia">Dementia</a>
+			<a href="CategoryPage.php?link=Demons">Demons</a>
+			<a href="CategoryPage.php?link=Drama">Drama</a>
+			<a href="CategoryPage.php?link=Fantasy">Fantasy</a>
+			<a href="CategoryPage.php?link=Game">Game</a>
+			<a href="CategoryPage.php?link=Historical">Historical</a>
+			<a href="CategoryPage.php?link=Horror">Horror</a>
+			<a href="CategoryPage.php?link=Josei">Josei</a>
+			<a href="CategoryPage.php?link=Kids">Kids</a>
+			<a href="CategoryPage.php?link=Magic">Magic</a>
+			<a href="CategoryPage.php?link=Martial">Martial Arts</a>
+			<a href="CategoryPage.php?link=Mecha">Mecha</a>
+			<a href="CategoryPage.php?link=Military">Military</a>
+			<a href="CategoryPage.php?link=Music">Music</a>
+			<a href="CategoryPage.php?link=Mystery">Mystery</a>
+			<a href="CategoryPage.php?link=Parody">Parody</a>
+			<a href="CategoryPage.php?link=Police">Police</a>
+			<a href="CategoryPage.php?link=Psychological">Psychological</a>
+			<a href="CategoryPage.php?link=Romance">Romance</a>
+			<a href="CategoryPage.php?link=Samurai">Samurai</a>
+			<a href="CategoryPage.php?link=School">School</a>
+			<a href="CategoryPage.php?link=Sci-Fi">Sci-Fi</a>
+			<a href="CategoryPage.php?link=Seinen">Seinen</a>
+			<a href="CategoryPage.php?link=Shoujo">Shoujo</a>
+			<a href="CategoryPage.php?link=Shoujo Ai">Shoujo Ai</a>
+			<a href="CategoryPage.php?link=Shounen">Shounen</a>
+			<a href="CategoryPage.php?link=Shounen Ai">Shounen Ai</a>
+			<a href="CategoryPage.php?link=Slice of Life">Slice of Life</a>
+			<a href="CategoryPage.php?link=Space">Space</a>
+			<a href="CategoryPage.php?link=Sports">Sports</a>
+			<a href="CategoryPage.php?link=Super Power">Super Power</a>
+			<a href="CategoryPage.php?link=Supernatural">Supernatural</a>
+			<a href="CategoryPage.php?link=Thriller">Thriller</a>
+			<a href="CategoryPage.php?link=Vampire">Vampire</a>
 		</div>
 	<!--</div>-->
 
@@ -38,19 +72,46 @@
 <!-----------------------THE BODY ------------------------>
 <body>
 <div class="categorybox"><span align="left">
-	<h1>Action</h1>
-	<h3 class="description">Plays out mainly through a clash of physical forces. Frequently these stories have fast cuts, tough characters making quick decisions and usually a beautiful girl nearby. Anything quick and most likely a thin storyline.</h3><br>
-		
-		<img class="categorybox" src="https://images-na.ssl-images-amazon.com/images/I/91kjVOEopVL._SY606_.jpg">
-		<img class="categorybox" src="https://upload.wikimedia.org/wikipedia/ru/4/41/Orange_anime.jpg">
-		<img class="categorybox" src="http://www.prologue.ca/DATA/LIVRE/grande/9782505072140~v~Boruto__Naruto_next_generations__Agenda_2018-2019.jpg">
-		<img class="categorybox" src="https://vignette.wikia.nocookie.net/dragonball/images/0/00/Dragon_Ball_Super_Poster.jpg">
-		<img class="categorybox" src="https://images-na.ssl-images-amazon.com/images/I/91kjVOEopVL._SY606_.jpg">
-		<img class="categorybox" src="https://images-na.ssl-images-amazon.com/images/I/61GI-8ZL4uL.jpg">
-		<img class="categorybox" src="https://vignette.wikia.nocookie.net/trinity-seven/images/b/b2/Trinity_Seven_Anime_Poster.jpg">
-		<img class="categorybox" src="http://assets-cf.gbeye.com/thumbnails/full_size_204762_1500563995.jpg">
+	
+	<?php 
+		/* DISPLAY GENRE TITLE */
+		if(isset($_GET['link'])){$_SESSION['link'] = $_GET['link'];}	
+		echo "<h1>".$_SESSION['link']."</h1>" ; 
+
+		/* DISPLAY GENRE DESCRIPTION */
+			$query="SELECT genre_desc FROM Genre WHERE genre_name='". $_SESSION['link']."'";
+			$result=mysqli_query($connection,$query);
+			if ($result->num_rows > 0) {
+			    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				        echo "<h3 class='description'>". $row['genre_desc']."</h3><br>";
+				    }
+				} else {echo "0 results";}
+
+		/* DISPLAY IMAGES */
+			$query="SELECT Anime.poster_link, Anime.title_eng FROM Anime, Classification WHERE genre='". $_SESSION['link']. "' AND Classification.anime_id=Anime.anime_id GROUP BY rank_overall";
+			$result=mysqli_query($connection,$query);
+
+				if ($result->num_rows > 0) {
+				    while($row = $result->fetch_assoc()) {
+				        echo "<img class='gallery' src=". $row["poster_link"].">";
+				    }
+				} else {
+				    echo "0 results";
+				}
+	?>
 </span>
 </div>
 <footer></footer>
 </body>
+<script>
+	(function() {
+	    var allimgs = document.images;
+	    for (var i = 0; i < allimgs.length; i++) {
+	        allimgs[i].onerror = function() {
+	            this.style.display = "none"; // Other elements aren't affected. 
+	        }
+	    }
+	})();
+</script>
 </html>
