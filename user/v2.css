@@ -67,13 +67,13 @@
 	header button.back{
 		top:3rem;
 		float: right;
-		position: absolute;
 		height: 1 rem;
 		padding: 0.3rem;
 		background: none;
 		border: none;
 		left:68rem;
 		font-size: 30px;
+		position: absolute;
 		color: #000;
 	}
 
@@ -105,6 +105,7 @@
 		overflow-x: hidden;
 		box-shadow: 0px 0px 15px black;
 	}
+
 	.dropdown {
 	    position: relative;
 	    display: inline-block;
@@ -131,6 +132,8 @@
 		color: #fff;
 		word-wrap: normal;
 		line-height: 0rem;
+		padding-right: 2rem;
+		display: block;
 	}
 	/*.dropdown:hover .dropdown-content, .dropdown-content:hover{
 		top: 70px;
@@ -176,23 +179,41 @@
 	
 	div.gallery{
 		position: relative;
-		width: 100%;
-		height: 14rem;
 		align-self: center;
-		overflow-x: auto;
-		padding-left: 3rem;
-		padding-right: 1.3rem;
+		max-width: 100%;
+		height: 15.5rem;		
+		margin-left: 3rem; margin-right: 2rem;
+		overflow-x: scroll;
+		white-space: nowrap;
+	}
+	div.gallery div.img-title{
+		position: relative;
+		height:15.5rem;
+		max-width: 9.5rem;
+		display: inline;
+		float: left;
+		margin-bottom: 1rem;
+		overflow-wrap: inherit;
+	}
+	div.img-title p.title{
+		font-family: 'Questrial', sans-serif;
+		font-size: 13px; font-weight: bolder;
+		overflow-wrap: break-word;
+		word-break: break-all;
+		display: block;
+		margin-top: -0.5px;
 	}
 	img.gallery{
 		height:13rem;
-		width: auto;
+		width: 9rem;
 		position: relative;
 		display: inline-block;
 		align-content: center;
 		padding: 0.2rem;
-		padding-bottom: 1rem;
+		padding-bottom: 0rem;
+		object-fit: cover;
 	}
-
+	
 	/* Anime Poster */
 	div.poster-hover{
 		height: 30rem;
@@ -229,7 +250,7 @@
 	}
 	div.categorybox{
 		position: relative;
-		top: 5rem; left: 5rem;
+		top: 3rem; left: 5rem;
 		max-width: 65rem;
 		height: auto;
 		padding: 1rem;
@@ -242,6 +263,11 @@
 		padding-left: 10px;
 		display: inline;
 		padding: 10px;
+	}
+	p.title{
+		font-family: 'Helvetica Nueue', sans-serif;
+		text-align: center;
+		display: inline-block;
 	}
 	img.gallery:hover, img.categorybox:hover/*, img.gallery2:hover*/{
 		opacity: 0.6;
