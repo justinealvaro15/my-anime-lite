@@ -121,7 +121,8 @@
 	    max-height: 15rem;
 	    max-width: 10rem;
 	    float: left;
-	    overflow: auto;
+    	overflow: -moz-scrollbars-vertical; 
+    	overflow-y: scroll;
 	    line-height: 0px;
 	    border-top: 3px solid #f72a3a;
 	    object-fit: contain;
@@ -186,22 +187,26 @@
 		overflow-x: scroll;
 		white-space: nowrap;
 	}
-	div.gallery div.img-title{
+	div.img-title{
 		position: relative;
 		height:15.5rem;
-		max-width: 9.5rem;
+		width: 9.5rem;
 		display: inline;
 		float: left;
 		margin-bottom: 1rem;
-		overflow-wrap: inherit;
+		overflow-wrap: break-word;
+		white-space: pre-wrap;
 	}
-	div.img-title p.title{
+	div.img-title a.title{
 		font-family: 'Questrial', sans-serif;
 		font-size: 13px; font-weight: bolder;
-		overflow-wrap: break-word;
-		word-break: break-all;
+		letter-spacing: 1px;
 		display: block;
+		text-align: center;
 		margin-top: -0.5px;
+		padding: 2px;
+		text-decoration: none;
+		color: #000;
 	}
 	img.gallery{
 		height:13rem;
@@ -264,11 +269,7 @@
 		display: inline;
 		padding: 10px;
 	}
-	p.title{
-		font-family: 'Helvetica Nueue', sans-serif;
-		text-align: center;
-		display: inline-block;
-	}
+	
 	img.gallery:hover, img.categorybox:hover/*, img.gallery2:hover*/{
 		opacity: 0.6;
 	}
@@ -300,7 +301,7 @@
 		text-transform: uppercase;
 	}
 	h3.description{
-		font-family: 'Helvetica', sans-serif !important;
+		font-family: 'Helvetica', sans-serif;
 		font-weight: lighter;
 		font-size: 15px;
 	}
@@ -326,7 +327,12 @@
 		margin-top: 0px;
 		color: #f99a2c;
 	}
+	h3.description a.searchres{
+		font-family: 'Questrial', sans-serif;
+		color: #681456;
+		text-decoration: none;
 
+	}
 	footer{
 		height:100px;
 	}
