@@ -11,10 +11,11 @@
 <title>MyAnimeLite</title>
 <!-----------------------THE HEAD ------------------------>
 <header>
-	<div class="searchbar">
+	<div class="searchbar"><form action="searchpage.php" method="post">
 		<button type="submit"><i class="fa fa-search"></i></button>
-		<input type="text" placeholder="Search...">
-
+		<input type="text" placeholder="Search..." name="input" value="">
+	
+		<p class="logo">MyAnimeLite</p></form>
 	</div>
 </header>
 </head>
@@ -26,46 +27,20 @@
 	<a> Link</a>
 		<a> genres: </a>
 		<div class="dropdown-content">
-			<a href="CategoryPage.php?link=Action">Action</a>
-			<a href="CategoryPage.php?link=Adventure">Adventure</a>
-			<a href="CategoryPage.php?link=Cars">Cars</a>
-			<a href="CategoryPage.php?link=Comedy">Comedy</a>
-			<a href="CategoryPage.php?link=Dementia">Dementia</a>
-			<a href="CategoryPage.php?link=Demons">Demons</a>
-			<a href="CategoryPage.php?link=Drama">Drama</a>
-			<a href="CategoryPage.php?link=Fantasy">Fantasy</a>
-			<a href="CategoryPage.php?link=Game">Game</a>
-			<a href="CategoryPage.php?link=Historical">Historical</a>
-			<a href="CategoryPage.php?link=Horror">Horror</a>
-			<a href="CategoryPage.php?link=Josei">Josei</a>
-			<a href="CategoryPage.php?link=Kids">Kids</a>
-			<a href="CategoryPage.php?link=Magic">Magic</a>
-			<a href="CategoryPage.php?link=Martial">Martial Arts</a>
-			<a href="CategoryPage.php?link=Mecha">Mecha</a>
-			<a href="CategoryPage.php?link=Military">Military</a>
-			<a href="CategoryPage.php?link=Music">Music</a>
-			<a href="CategoryPage.php?link=Mystery">Mystery</a>
-			<a href="CategoryPage.php?link=Parody">Parody</a>
-			<a href="CategoryPage.php?link=Police">Police</a>
-			<a href="CategoryPage.php?link=Psychological">Psychological</a>
-			<a href="CategoryPage.php?link=Romance">Romance</a>
-			<a href="CategoryPage.php?link=Samurai">Samurai</a>
-			<a href="CategoryPage.php?link=School">School</a>
-			<a href="CategoryPage.php?link=Sci-Fi">Sci-Fi</a>
-			<a href="CategoryPage.php?link=Seinen">Seinen</a>
-			<a href="CategoryPage.php?link=Shoujo">Shoujo</a>
-			<a href="CategoryPage.php?link=Shoujo Ai">Shoujo Ai</a>
-			<a href="CategoryPage.php?link=Shounen">Shounen</a>
-			<a href="CategoryPage.php?link=Shounen Ai">Shounen Ai</a>
-			<a href="CategoryPage.php?link=Slice of Life">Slice of Life</a>
-			<a href="CategoryPage.php?link=Space">Space</a>
-			<a href="CategoryPage.php?link=Sports">Sports</a>
-			<a href="CategoryPage.php?link=Super Power">Super Power</a>
-			<a href="CategoryPage.php?link=Supernatural">Supernatural</a>
-			<a href="CategoryPage.php?link=Thriller">Thriller</a>
-			<a href="CategoryPage.php?link=Vampire">Vampire</a>
+			<?php 
+				$sql="SELECT genre_name FROM Genre";
+				$result=mysqli_query($connection,$sql);
+
+				if ($result->num_rows > 0) {
+			    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				    	echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
+				    }
+				} else {
+				    echo "0 results";
+				}
+			?>
 		</div>
-	<!--</div>-->
 
 </div>
 
@@ -89,12 +64,13 @@
 				} else {echo "0 results";}
 
 		/* DISPLAY IMAGES */
-			$query="SELECT Anime.poster_link, Anime.title_eng FROM Anime, Classification WHERE genre='". $_SESSION['link']. "' AND Classification.anime_id=Anime.anime_id GROUP BY rank_overall";
+			$query="SELECT Anime.poster_link, Anime.title_eng, Anime.title_jap FROM Anime, Classification WHERE genre='". $_SESSION['link']. "' AND Classification.anime_id=Anime.anime_id GROUP BY rank_overall";
 			$result=mysqli_query($connection,$query);
 
 				if ($result->num_rows > 0) {
 				    while($row = $result->fetch_assoc()) {
-				        echo "<img class='gallery' src=". $row["poster_link"].">";
+				    	if($row['title_eng']!=NULL)
+				        echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["title_jap"]."'>".$row["title_eng"]."</a></div>";
 				    }
 				} else {
 				    echo "0 results";
@@ -109,7 +85,7 @@
 	    var allimgs = document.images;
 	    for (var i = 0; i < allimgs.length; i++) {
 	        allimgs[i].onerror = function() {
-	            this.style.display = "none"; // Other elements aren't affected. 
+	            this.style.visibility = "hidden"; // Other elements aren't affected. 
 	        }
 	    }
 	})();
