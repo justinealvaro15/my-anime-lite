@@ -26,9 +26,9 @@
 <div class="sidenav">
 	<h2>MyAnimeLite</h2>
 	<a href="HomeV2.php"> Home</a>
+	<a href="MoviesPage.php"> Movies</a>
 	<a> Link</a>
-	<a> Link</a>
-		<a> genres: </a>
+	<a> Genres: </a>
 		<div class="dropdown-content">
 			<?php 
 				$sql="SELECT genre_name FROM Genre";
@@ -130,7 +130,7 @@
 	    var allimgs = document.images;
 	    for (var i = 0; i < allimgs.length; i++) {
 	        allimgs[i].onerror = function() {
-	            this.style.visibility = "hidden"; // Other elements aren't affected. 
+	            this.style.content = "url('no_logo.jpg')"; // Other elements aren't affected. 
 	        }
 	    }
 	})();
