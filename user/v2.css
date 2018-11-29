@@ -7,7 +7,6 @@
 		background-position: top-right;
 		background-repeat: repeat;
 		margin-top: 6rem; margin-left: 15rem; margin-right: 0rem;
-		cursor: crosshair;
 	}
 	header{
 		position: fixed;
@@ -182,25 +181,25 @@
 		position: relative;
 		align-self: center;
 		max-width: 100%;
-		height: 15.5rem;		
+		height: 16rem;		
 		margin-left: 3rem; margin-right: 2rem;
 		overflow-x: scroll;
 		white-space: nowrap;
 	}
 	div.img-title{
 		position: relative;
-		height:15.5rem;
+		height:16rem;
 		width: 9.5rem;
 		display: inline;
 		float: left;
-		margin-bottom: 1rem;
-		overflow-wrap: break-word;
+		margin-bottom: 0.5rem;
+		overflow: auto;
 		white-space: pre-wrap;
 	}
 	div.img-title a.title{
 		font-family: 'Questrial', sans-serif;
-		font-size: 13px; font-weight: bolder;
-		letter-spacing: 1px;
+		font-size: 13px; font-weight: bold;
+		letter-spacing: .5px;
 		display: block;
 		text-align: center;
 		margin-top: -0.5px;
@@ -226,6 +225,7 @@
 		position: relative;
 		left:8rem; top:5rem;
 		display: inline-block;
+		align-content: center;
 	}
 	div.poster{
 		height: 30rem;
@@ -238,8 +238,7 @@
 	.poster_img{
 		object-fit: contain;
 		height:30rem;
-		max-width: 21rem;
-
+		width: 21rem;
 	}
 	.poster-hover:hover .poster{
 		display: inline-block;
