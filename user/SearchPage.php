@@ -23,7 +23,7 @@
 <div class="sidenav">
 	<h2>MyAnimeLite</h2>
 	<a href="HomeV2.php"> Home</a>
-	<a> Link</a>
+	<a href="MoviesPage.php"> Movies</a>
 	<a> Link</a>
 		<a> genres: </a>
 		<div class="dropdown-content">
