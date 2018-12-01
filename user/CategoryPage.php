@@ -1,5 +1,5 @@
 <?php
-	include_once ('../server.php'); 
+	include_once ('../server.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,8 +24,8 @@
 	<h2>MyAnimeLite</h2>
 	<a href="HomeV2.php"> Home</a>
 	<a href="MoviesPage.php"> Movies</a>
-	<a> Link</a>
-		<a> genres: </a>
+	<a href="AddAnime.php"> Add Anime</a>
+	<a> Genres: </a>
 		<div class="dropdown-content">
 			<?php 
 				$sql="SELECT genre_name FROM Genre";
@@ -64,13 +64,13 @@
 				} else {echo "0 results";}
 
 		/* DISPLAY IMAGES */
-			$query="SELECT Anime.poster_link, Anime.title_eng, Anime.title_jap FROM Anime, Classification WHERE genre='". $_SESSION['link']. "' AND Classification.anime_id=Anime.anime_id GROUP BY rank_overall";
+			$query="SELECT Anime.poster_link, Anime.title_eng, Anime.title_jap, Anime.anime_id AS anime_id FROM Anime, Classification WHERE genre='". $_SESSION['link']. "' AND Classification.anime_id=Anime.anime_id GROUP BY rank_overall";
 			$result=mysqli_query($connection,$query);
 
 				if ($result->num_rows > 0) {
 				    while($row = $result->fetch_assoc()) {
 				    	if($row['title_eng']!=NULL)
-				        echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["title_jap"]."'>".$row["title_eng"]."</a></div>";
+				        echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["anime_id"]."'>".$row["title_eng"]."</a></div>";
 				    }
 				} else {
 				    echo "0 results";

@@ -24,8 +24,8 @@
 	<h2>MyAnimeLite</h2>
 	<a href="HomeV2.php"> Home</a>
 	<a href="MoviesPage.php"> Movies</a>
-	<a> Link</a>
-		<a> genres: </a>
+	<a href="AddAnime.php"> Add Anime</a>
+	<a> Genres: </a>
 		<div class="dropdown-content">
 			<?php 
 				$sql="SELECT genre_name FROM Genre";
@@ -41,17 +41,15 @@
 				}
 			?>
 		</div>
-	<!--</div>-->
 
 </div>
-
 <!-----------------------THE BODY ------------------------>
 <body>
 <div class="categorybox"><span align="left">
 	 <?php 
 	 	$_SESSION['searchkey'] = $_POST["input"];
 	 	echo "<h1>".$_SESSION['searchkey']."</h1>"; 
-	 	$query="SELECT title_eng, title_jap, poster_link FROM Anime WHERE title_eng  LIKE '%". $_SESSION['searchkey']. "%' OR title_jap LIKE '%". $_SESSION['searchkey']. "%'";
+	 	$query="SELECT title_eng, title_jap, poster_link, anime_id FROM Anime WHERE title_eng  LIKE '%". $_SESSION['searchkey']. "%' OR title_jap LIKE '%". $_SESSION['searchkey']. "%' ORDER BY title_eng ASC";
 		$result=mysqli_query($connection,$query);
 		if ($result->num_rows > 0) {
 			// output data of each row
@@ -62,7 +60,7 @@
 					}
 				}
 				else if($row['title_eng']!=NULL)
-				echo "<h3 class='description'><a class='searchres' href='AnimePage.php?link=". $row['title_jap']."'>". $row['title_eng']." (". 
+				echo "<h3 class='description'><a class='searchres' href='AnimePage.php?link=". $row['anime_id']."'>". $row['title_eng']." (". 
 					$row['title_jap']. ")</h3><br>";
 			}
 		} else {echo "0 results";}

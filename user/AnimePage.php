@@ -11,33 +11,39 @@
 
 <title>MyAnimeLite</title>
 <!-----------------------THE HEAD ------------------------>
-<header >
-	<div class="searchbar">
+<header>
+	<div class="searchbar"><form action="searchpage.php" method="post">
 		<button type="submit"><i class="fa fa-search"></i></button>
-		<input type="text" placeholder="Search...">
-		<button class="back" onclick="goBack()">←</button>
+		<input type="text" placeholder="Search..." name="input" value="">
+	
+		<p class="logo">MyAnimeLite</p></form>
 	</div>
 </header>
 </head>
-<div id="mySidenav" class="sidenav">
-	
+
+<div class="sidenav">
 	<h2>MyAnimeLite</h2>
-	<a href=""> Link</a>
-	<a> Link</a>
-	<a> Link</a>
-	<!--<div class="dropdown">-->
-		<a> genres: </a>
+	<a href="HomeV2.php"> Home</a>
+	<a href="MoviesPage.php"> Movies</a>
+	<a href="AddAnime.php"> Add Anime</a>
+	<a> Genres: </a>
 		<div class="dropdown-content">
-			<a>Action</a><a>Adventure</a><a>Cars</a><a>Comedy</a><a>Dementia</a><a>Demons</a><a>Drama</a><a>Fantasy</a><a>Game</a>
-			<a>Historical</a><a>Horror</a><a>Josei</a><a>Kids</a><a>Magic</a><a>Martial Arts</a><a>Mecha</a><a>Military</a>
-			<a>Music</a><a>Mystery</a><a>Parody</a><a>Police</a><a>Psychological</a><a>Romance</a><a>Samurai</a><a>School</a>
-			<a>Sci-Fi</a><a>Seinen</a><a>Shoujo</a><a>Shoujo Ai</a><a>Shounen</a><a>Shounen Ai</a><a>Slice of Life</a>
-			<a>Space</a><a>Sports</a><a>Super Power</a><a>Supernatural</a><a>Thriller</a><a>Vampire</a>
+			<?php 
+				$sql="SELECT genre_name FROM Genre";
+				$result=mysqli_query($connection,$sql);
+
+				if ($result->num_rows > 0) {
+			    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				    	echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
+				    }
+				} else {
+				    echo "0 results";
+				}
+			?>
 		</div>
-	<!--</div>-->
 
 </div>
-</head>
 <!-----------------------THE BODY ------------------------>
 <body>
 
@@ -80,8 +86,11 @@
 		echo "<h3>Licensor: <span class='data'>".$result["lic_name"]."</span></h3>";
 		echo "<br><br>";
 
+		echo "<h4>";
 		echo "<a href='UpdateAnime.php?anime_id=".$result["anime_id"]."'>Update</a>";
-		
+		echo "&nbsp &nbsp";
+		echo "<a href='DeleteAnime.php?anime_id=".$result["anime_id"]."'>Delete</a>";
+		echo "</h4>";
 	?>
 
 	<!-- <div class="btn-group">

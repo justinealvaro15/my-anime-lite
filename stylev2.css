@@ -37,7 +37,8 @@ form, .content {
 	display: block;
 	text-align: left;
     margin: 3px;
-    color: white;
+	color: white;
+	font-family:  'Questrial', sans-serif;
 }
 
 .input-group input {
@@ -59,9 +60,20 @@ form, .content {
 	font-family:  'Questrial', sans-serif;
 }
 
+.btn-2 {
+	padding: 10px;
+	font-size: 15px;
+	color: white;
+	background: #f99a2c;
+	border: none;
+	border-radius: 5px;
+	width: 20% !important;
+	font-family:  'Questrial', sans-serif;
+}
+
 .error {
 	width: 100%; 
-	color: red; 
+	color: #f72a3a; 
     text-align: left;
     font-weight: bold;
     padding-left: 5px;
@@ -69,6 +81,12 @@ form, .content {
 
 p{
     color: white;
+}
+
+a:-webkit-any-link {
+    color: white;
+    cursor: pointer;
+	font-family:  'Questrial', sans-serif;
 }
 
 /* body {

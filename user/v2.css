@@ -301,6 +301,10 @@ h3.description{
 	font-weight: lighter;
 	font-size: 15px;
 }
+h4{
+	border-top: 1px !important;
+	border-top-color: #3f333f !important;
+}
 div.score-rank{
 	height: 3.8rem;
 	max-width: 7rem;
