@@ -333,3 +333,29 @@ footer{
 	height:100px;
 }
 
+.btn-group button {
+    background-color: #3f333f; /* Green background */
+    border: 2px solid #f99a2c; /* Green border */
+    color: white; /* White text */
+	padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+	float: left; /* Float the buttons side by side */
+	margin-top: 24px;
+	font-family:  'Questrial', sans-serif;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #f99a2c;
+}

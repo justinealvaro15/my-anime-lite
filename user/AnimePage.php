@@ -74,28 +74,27 @@
 		echo "<h3>Source: <span class='data'>".$result["source"]."</span></h3>";
 		echo "<h3>Episode Count: <span class='data'>".$result["ep_count"]."</span></h3>";
 		echo "<h3>Duration: <span class='data'>".$result["duration_min"]."</span></h3>";
-		echo "<h3>Type: <span class='data'>".$result["type"]."</span></h3>";
 
 		echo "<h3>Aired: <span class='data'>".$result["season"]." ".$result["year"]."</span></h3>";
 		echo "<h3>Studio: <span class='data'>".$result["studio_name"]."</span></h3>";
 		echo "<h3>Licensor: <span class='data'>".$result["lic_name"]."</span></h3>";
-	?>
-	<!-- <h1>My Hero Academia<t>  <span class="yr">(2017)</span></h1> -->
-	<!-- <h2><span class="yr">action/shoujou</span></h2> -->
+		echo "<br><br>";
 
-	<!-- <div class="score-rank"><h3 class="score-rank"><span class="score-rank-data">8.43<br></span>score</h3></div>
-	<div class="score-rank"><h3 class="score-rank"><span class="score-rank-data">123<br></span>Rank Popularity </h3></div>
-	<div class="score-rank"><h3 class="score-rank"><span class="score-rank-data">18<br></span>Rank Overall</h3></div> -->
-	<!-- <br><br> -->
-	<!-- <h3>Japanese Title: <span class="data">僕のヒーローアカデミア </span></h3>
-	<h3>Romaji: <span class="data"> Boku no Hero Academia</span></h3>
-	<h3>Type: <span class="data">TV</span></h3>
-	<h3>Source: <span class="data">Manga</span></h3>
-	<h3>Episode Count: <span class="data">13</span></h3>
-	<h3>Duration: <span class="data">24mins. </span></h3> <br>
-	<h3>Studio: <span class="data">Bones</span></h3>
-	<h3>Licensor:<span class="data">Netflix</span></h3>
-	<h3>Airing: <span class="data">No</span></h3> -->
+		echo "<a href='UpdateAnime.php?anime_id=".$result["anime_id"]."'>Update</a>";
+		
+	?>
+
+	<!-- <div class="btn-group">
+		<button type="submit" class="btn" name="update_anime" id="update">Login</button>
+			<script>
+				var btn = document.getElementById('update');
+				btn.addEventListener('click', function() {
+					document.location.href = '<?php echo "UpdateAnime.php"; ?>';
+				});
+			</script>
+		<button>Delete</button>
+	</div> -->
+
 </div>	
 <footer></footer>
 </body>

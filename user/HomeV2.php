@@ -27,7 +27,7 @@
 	<h2>MyAnimeLite</h2>
 	<a href="HomeV2.php"> Home</a>
 	<a href="MoviesPage.php"> Movies</a>
-	<a> Link</a>
+	<a href="AddAnime.php"> Add Anime</a>
 	<a> Genres: </a>
 		<div class="dropdown-content">
 			<?php 
