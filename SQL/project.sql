@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 23, 2018 at 07:55 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Dec 01, 2018 at 08:35 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,26 +19,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `project`
+-- Database: `myanimelite`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Aired`
+-- Table structure for table `aired`
 --
 
-CREATE TABLE `Aired` (
+CREATE TABLE `aired` (
   `year` int(11) NOT NULL,
-  `season` varchar(10) COLLATE utf8_bin NOT NULL,
+  `season` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `anime_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Aired`
+-- Dumping data for table `aired`
 --
 
-INSERT INTO `Aired` (`year`, `season`, `anime_id`) VALUES
+INSERT INTO `aired` (`year`, `season`, `anime_id`) VALUES
 (1963, 'Fall', 2686),
 (1963, 'Fall', 5052),
 (1963, 'Winter', 2747),
@@ -2355,7 +2355,7 @@ INSERT INTO `Aired` (`year`, `season`, `anime_id`) VALUES
 (2017, 'Fall', 34284),
 (2017, 'Fall', 34411),
 (2017, 'Fall', 34445);
-INSERT INTO `Aired` (`year`, `season`, `anime_id`) VALUES
+INSERT INTO `aired` (`year`, `season`, `anime_id`) VALUES
 (2017, 'Fall', 34451),
 (2017, 'Fall', 34474),
 (2017, 'Fall', 34522),
@@ -2664,19 +2664,19 @@ INSERT INTO `Aired` (`year`, `season`, `anime_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Airing`
+-- Table structure for table `airing`
 --
 
-CREATE TABLE `Airing` (
+CREATE TABLE `airing` (
   `year` int(11) NOT NULL,
-  `season` varchar(10) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `season` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Airing`
+-- Dumping data for table `airing`
 --
 
-INSERT INTO `Airing` (`year`, `season`) VALUES
+INSERT INTO `airing` (`year`, `season`) VALUES
 (1963, 'Fall'),
 (1963, 'Winter'),
 (1965, 'Fall'),
@@ -2872,28 +2872,28 @@ INSERT INTO `Airing` (`year`, `season`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Anime`
+-- Table structure for table `anime`
 --
 
-CREATE TABLE `Anime` (
+CREATE TABLE `anime` (
   `anime_id` int(11) NOT NULL,
-  `title_jap` varchar(200) COLLATE utf8_bin NOT NULL,
-  `title_eng` varchar(200) COLLATE utf8_bin DEFAULT NULL,
-  `type` varchar(10) COLLATE utf8_bin DEFAULT NULL,
-  `source` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `title_jap` varchar(200) NOT NULL,
+  `title_eng` varchar(200) DEFAULT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  `source` varchar(20) DEFAULT NULL,
   `ep_count` int(11) DEFAULT NULL,
   `duration_min` double DEFAULT NULL,
   `rank_overall` int(11) DEFAULT NULL,
   `rank_popularity` int(11) DEFAULT NULL,
   `score` double DEFAULT NULL,
-  `poster_link` varchar(100) COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `poster_link` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Anime`
+-- Dumping data for table `anime`
 --
 
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (1, 'Cowboy Bebop', 'Cowboy Bebop', 'TV', 'Original', 26, 24, 27, 38, 8.81, 'https://myanimelist.cdn-dena.com/images/anime/4/19644.jpg'),
 (5, 'Cowboy Bebop: Tengoku no Tobira', 'Cowboy Bebop: The Movie', 'Movie', 'Original', 1, 114, 157, 438, 8.41, 'https://myanimelist.cdn-dena.com/images/anime/6/14331.jpg'),
 (6, 'Trigun', 'Trigun', 'TV', 'Manga', 26, 24, 234, 138, 8.31, 'https://myanimelist.cdn-dena.com/images/anime/7/20310.jpg'),
@@ -3221,7 +3221,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (448, 'Tenjou Tenge: The Ultimate Fight', 'Tenjho Tenge: The Ultimate Fight', 'OVA', 'Manga', 2, 24, 3016, 2018, 7.15, 'https://myanimelist.cdn-dena.com/images/anime/11/7362.jpg'),
 (449, 'InuYasha: Guren no Houraijima', 'InuYasha the Movie 4: Fire on the Mystic Island', 'Movie', 'Manga', 1, 87, 1298, 1383, 7.62, 'https://myanimelist.cdn-dena.com/images/anime/10/20109.jpg'),
 (450, 'InuYasha: Kagami no Naka no Mugenjo', 'InuYasha the Movie 2: The Castle Beyond the Looking Glass', 'Movie', 'Manga', 1, 99, 991, 1278, 7.75, 'https://myanimelist.cdn-dena.com/images/anime/1162/92219.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (451, 'InuYasha: Tenka Hadou no Ken', 'InuYasha the Movie 3: Swords of an Honorable Ruler', 'Movie', 'Manga', 1, 98, 738, 1352, 7.88, 'https://myanimelist.cdn-dena.com/images/anime/5/2637.jpg'),
 (452, 'InuYasha: Toki wo Koeru Omoi', 'InuYasha the Movie: Affections Touching Across Time', 'Movie', 'Manga', 1, 99, 1150, 1357, 7.68, 'https://myanimelist.cdn-dena.com/images/anime/8/20111.jpg'),
 (454, '.hack//Gift', '.hack//Gift', 'OVA', 'Original', 1, 26, 6425, 2894, 6.29, 'https://myanimelist.cdn-dena.com/images/anime/2/23085.jpg'),
@@ -3536,7 +3536,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (973, 'Glass no Kantai: La Legende du Vent de l&#039;Univers', 'Glass Fleet: The Legend of the Wind of the Universe', 'TV', 'Original', 24, 24, 5063, 3853, 6.63, 'https://myanimelist.cdn-dena.com/images/anime/2/75835.jpg'),
 (974, 'Dead Leaves', 'Dead Leaves', 'Movie', 'Original', 1, 53, 2555, 1508, 7.26, 'https://myanimelist.cdn-dena.com/images/anime/8/8621.jpg'),
 (975, 'Yokohama Kaidashi Kikou', NULL, 'OVA', 'Manga', 2, 29, 2266, 2943, 7.35, 'https://myanimelist.cdn-dena.com/images/anime/6/23054.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (976, 'Yokohama Kaidashi Kikou: Quiet Country Cafe', NULL, 'OVA', 'Manga', 2, 32, 2477, 3743, 7.29, 'https://myanimelist.cdn-dena.com/images/anime/6/23055.jpg'),
 (979, 'Street Fighter Zero The Animation', 'Street Fighter Alpha: The Movie', 'Movie', 'Game', 1, 90, 5037, 3481, 6.64, 'https://myanimelist.cdn-dena.com/images/anime/6/3454.jpg'),
 (980, 'Rikujou Bouei-tai Mao-chan', 'Ground Defense Force! Mao-chan', 'TV', 'Original', 26, 12, 6281, 5676, 6.33, 'https://myanimelist.cdn-dena.com/images/anime/10/75213.jpg'),
@@ -3854,7 +3854,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (1553, 'Queen Emeraldas', NULL, 'OVA', 'Manga', 4, 31, 3615, 5179, 6.99, 'https://myanimelist.cdn-dena.com/images/anime/10/21120.jpg'),
 (1554, 'Asatte no Houkou.', 'Living for the Day After Tomorrow', 'TV', 'Manga', 12, 25, 3064, 2730, 7.13, 'https://myanimelist.cdn-dena.com/images/anime/4/74962.jpg'),
 (1557, 'Shounen Onmyouji', 'Shonen Onmyoji', 'TV', 'Light novel', 26, 23, 1158, 1793, 7.68, 'https://myanimelist.cdn-dena.com/images/anime/11/23852.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (1559, 'Shijou Saikyou no Deshi Kenichi', 'KenIchi: The Mightiest Disciple', 'TV', 'Manga', 50, 25, 293, 475, 8.22, 'https://myanimelist.cdn-dena.com/images/anime/9/75515.jpg'),
 (1562, 'Yamato Nadeshiko Shichihenge♥', 'The Seven Metamorphoses of Yamato Nadeshiko', 'TV', 'Manga', 25, 24, 788, 813, 7.86, 'https://myanimelist.cdn-dena.com/images/anime/11/7701.jpg'),
 (1563, 'Magic Knight Rayearth II', 'Magic Knight Rayearth II', 'TV', 'Manga', 29, 24, 1353, 2536, 7.6, 'https://myanimelist.cdn-dena.com/images/anime/7/55885.jpg'),
@@ -4177,7 +4177,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (2166, 'Doujin Work', 'Dojin Work', 'TV', '4-koma manga', 12, 13, 4061, 2508, 6.86, 'https://myanimelist.cdn-dena.com/images/anime/8/75482.jpg'),
 (2167, 'Clannad', 'Clannad', 'TV', 'Visual novel', 23, 24, 298, 31, 8.21, 'https://myanimelist.cdn-dena.com/images/anime/13/8498.jpg'),
 (2170, 'Sousei no Aquarion OVA', NULL, 'OVA', 'Original', 2, 54, 3101, 3919, 7.13, 'https://myanimelist.cdn-dena.com/images/anime/7/72745.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (2171, 'Detective Conan Movie 11: Jolly Roger in the Deep Azure', NULL, 'Movie', 'Manga', 1, 105, 1319, 2404, 7.61, 'https://myanimelist.cdn-dena.com/images/anime/10/15432.jpg'),
 (2175, 'Kino no Tabi: The Beautiful World - Byouki no Kuni - For You', NULL, 'Movie', 'Light novel', 1, 28, 901, 2066, 7.79, 'https://myanimelist.cdn-dena.com/images/anime/8/73906.jpg'),
 (2176, 'Kiddy Grade: Ignition', NULL, 'Movie', 'Original', 1, 84, 3078, 5407, 7.13, 'https://myanimelist.cdn-dena.com/images/anime/9/23600.jpg'),
@@ -4498,7 +4498,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (3032, 'Digimon Tamers: Boukensha-tachi no Tatakai', 'Digimon Tamers: Battle of Adventurers', 'Movie', 'Original', 1, 50, 3257, 3087, 7.08, 'https://myanimelist.cdn-dena.com/images/anime/10/7812.jpg'),
 (3033, 'Digimon Tamers: Bousou Digimon Tokkyuu', 'Digimon Tamers: Runaway Locomon', 'Movie', 'Original', 1, 30, 3068, 2920, 7.13, 'https://myanimelist.cdn-dena.com/images/anime/12/4418.jpg'),
 (3035, 'Chouon Senshi Borgman', NULL, 'TV', 'Other', 35, 24, 5476, 7642, 6.53, 'https://myanimelist.cdn-dena.com/images/anime/11/23045.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (3036, 'Tobe! Isami', 'Soar High! Isami', 'TV', 'Original', 50, 25, 2407, 7961, 7.31, 'https://myanimelist.cdn-dena.com/images/anime/8/21083.jpg'),
 (3037, 'GS Mikami: Gokuraku Daisakusen!!', 'Ghost Sweeper Mikami Movie', 'Movie', 'Manga', 1, 59, 4702, 7339, 6.71, 'https://myanimelist.cdn-dena.com/images/anime/11/49257.jpg'),
 (3044, 'Tetsuwan Atom (1980)', 'Astro Boy (1980)', 'TV', 'Manga', 52, 24, 2698, 4213, 7.23, 'https://myanimelist.cdn-dena.com/images/anime/3/57325.jpg'),
@@ -4816,7 +4816,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (4264, 'Ultraviolet: Code 044', 'Ultraviolet: Code 044', 'TV', 'Other', 12, 24, 7362, 5065, 6, 'https://myanimelist.cdn-dena.com/images/anime/5/21701.jpg'),
 (4266, 'Vie Durant', NULL, 'ONA', 'Original', 8, 8, 9091, 8195, 4.95, 'https://myanimelist.cdn-dena.com/images/anime/7/24039.jpg'),
 (4280, 'Kara no Kyoukai 4: Garan no Dou', 'the Garden of sinners Chapter 4: The Hollow Shrine', 'Movie', 'Light novel', 1, 46, 553, 657, 8, 'https://myanimelist.cdn-dena.com/images/anime/9/21736.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (4282, 'Kara no Kyoukai 5: Mujun Rasen', 'the Garden of sinners Chapter 5: Paradox Paradigm', 'Movie', 'Light novel', 1, 114, 65, 594, 8.63, 'https://myanimelist.cdn-dena.com/images/anime/8/9246.jpg'),
 (4306, 'Mizugumo Monmon', 'Water Spider Monmon', 'Movie', 'Original', 1, 15, 4538, 7136, 6.75, 'https://myanimelist.cdn-dena.com/images/anime/11/8110.jpg'),
 (4334, 'Heroman', NULL, 'TV', 'Original', 26, 24, 3915, 2234, 6.9, 'https://myanimelist.cdn-dena.com/images/anime/10/23841.jpg'),
@@ -5130,7 +5130,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (6325, 'Naruto: Shippuuden Movie 3 - Hi no Ishi wo Tsugu Mono', NULL, 'Movie', 'Manga', 1, 95, 1738, 827, 7.47, 'https://myanimelist.cdn-dena.com/images/anime/7/14686.jpg'),
 (6327, 'Miracle Train: Chuo-sen e Youkoso', 'Miracle Train: Welcome to the Chuo Line', 'Special', 'Manga', 1, 1, 6875, 5769, 6.17, 'https://myanimelist.cdn-dena.com/images/anime/9/18390.jpg'),
 (6331, 'Ten Little Gall Force', NULL, 'OVA', 'Original', 1, 22, 6450, 8488, 6.29, 'https://myanimelist.cdn-dena.com/images/anime/5/26536.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (6336, 'Mobile Suit Gundam Unicorn', 'Mobile Suit Gundam Unicorn', 'OVA', 'Novel', 7, 62, 232, 1481, 8.31, 'https://myanimelist.cdn-dena.com/images/anime/12/50459.jpg'),
 (6344, 'Shikabane Hime: Kuro – Soredemo, Hito to Shite', 'Corpse Princess: Kuro - Even So, As a Person', 'Special', 'Manga', 1, 23, 3283, 3533, 7.08, 'https://myanimelist.cdn-dena.com/images/anime/4/73631.jpg'),
 (6347, 'Baka to Test to Shoukanjuu', 'Baka & Test - Summon the Beasts', 'TV', 'Light novel', 13, 24, 959, 129, 7.76, 'https://myanimelist.cdn-dena.com/images/anime/3/50389.jpg'),
@@ -5440,7 +5440,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (8490, 'Digimon Adventure 3D: Digimon Grand Prix!', NULL, 'Movie', 'Original', 1, 7, 7344, 4595, 6, 'https://myanimelist.cdn-dena.com/images/anime/12/22649.jpg'),
 (8491, 'Digimon Savers 3D: Digital World Kiki Ippatsu!', NULL, 'Movie', 'Original', 1, 7, 6615, 5135, 6.24, 'https://myanimelist.cdn-dena.com/images/anime/13/22648.jpg'),
 (8496, 'Neko Neko Fantasia', 'Kitty-Cat Fantasia', 'OVA', 'Manga', 1, 25, 7089, 9970, 6.1, 'https://myanimelist.cdn-dena.com/images/anime/7/22666.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (8514, 'Break Blade 2: Ketsubetsu no Michi', 'Broken Blade 2', 'Movie', 'Manga', 1, 51, 839, 1528, 7.82, 'https://myanimelist.cdn-dena.com/images/anime/2/68081.jpg'),
 (8516, 'Baka to Test to Shoukanjuu Ni!', 'Baka & Test – Summon the Beasts 2', 'TV', 'Light novel', 13, 24, 652, 298, 7.92, 'https://myanimelist.cdn-dena.com/images/anime/3/28992.jpg'),
 (8518, 'Mai-Otome Special: Otome no Inori', NULL, 'Special', 'Original', 1, 5, 5563, 6529, 6.51, 'https://myanimelist.cdn-dena.com/images/anime/6/23015.jpg'),
@@ -5753,7 +5753,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (10604, 'Hidan no Aria Special', 'Aria the Scarlet Ammo Special', 'Special', 'Light novel', 1, 24, 3814, 1801, 6.93, 'https://myanimelist.cdn-dena.com/images/anime/2/29138.jpg'),
 (10607, 'Rerere no Tensai Bakabon', NULL, 'TV', 'Manga', 24, 25, 5851, 10645, 6.44, 'https://myanimelist.cdn-dena.com/images/anime/5/60847.jpg'),
 (10620, 'Mirai Nikki (TV)', 'The Future Diary', 'TV', 'Manga', 26, 23, 721, 12, 7.89, 'https://myanimelist.cdn-dena.com/images/anime/13/33465.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (10622, 'Tengen Toppa Gurren Lagann: Ore no Gurren wa Pikka-Pika!!', NULL, 'OVA', 'Original', 1, 12, 3968, 2540, 6.89, 'https://myanimelist.cdn-dena.com/images/anime/10/29189.jpg'),
 (10624, 'Mardock Scramble: The Second Combustion', 'Mardock Scramble: The Second Combustion', 'Movie', 'Novel', 1, 64, 1733, 2138, 7.47, 'https://myanimelist.cdn-dena.com/images/anime/11/29197.jpg'),
 (10638, 'Denpa Onna to Seishun Otoko: Mayonaka no Taiyou', NULL, 'Special', 'Light novel', 1, 29, 2104, 1742, 7.38, 'https://myanimelist.cdn-dena.com/images/anime/3/36709.jpg'),
@@ -6061,7 +6061,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (13767, 'Junjou Romantica OVA', NULL, 'OVA', 'Manga', 2, 22, 490, 2089, 8.05, 'https://myanimelist.cdn-dena.com/images/anime/6/60389.jpg'),
 (13799, 'Pokemon: Meloetta no Kirakira Recital', 'Pokemon: Meloetta&#039;s Moonlight Serenade', 'Movie', 'Game', 1, 20, 5130, 4827, 6.62, 'https://myanimelist.cdn-dena.com/images/anime/3/49309.jpg'),
 (13807, 'Corpse Party: Missing Footage', NULL, 'OVA', 'Visual novel', 1, 11, 6303, 1077, 6.32, 'https://myanimelist.cdn-dena.com/images/anime/5/38331.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (13833, 'Nagareboshi Lens', NULL, 'OVA', 'Manga', 1, 18, 4541, 3061, 6.75, 'https://myanimelist.cdn-dena.com/images/anime/7/38377.jpg'),
 (13835, 'Marimo no Hana: Saikyou Butouha Shougakusei Densetsu', NULL, 'OVA', 'Manga', 1, 11, 8977, 5576, 5.07, 'https://myanimelist.cdn-dena.com/images/anime/12/38379.jpg'),
 (13839, 'Detective Conan OVA 12: The Miracle of Excalibur', NULL, 'OVA', 'Manga', 1, 29, 2993, 4407, 7.15, 'https://myanimelist.cdn-dena.com/images/anime/5/59513.jpg'),
@@ -6367,7 +6367,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (18393, 'Fairy Tail x Rave', NULL, 'OVA', 'Manga', 1, 25, 1803, 1159, 7.45, 'https://myanimelist.cdn-dena.com/images/anime/9/58513.jpg'),
 (18397, 'Shingeki no Kyojin OVA', NULL, 'OVA', 'Manga', 3, 23, 746, 455, 7.88, 'https://myanimelist.cdn-dena.com/images/anime/9/59221.jpg'),
 (18411, 'Gingitsune', 'Gingitsune: Messenger Fox of the Gods', 'TV', 'Manga', 12, 24, 2717, 1764, 7.22, 'https://myanimelist.cdn-dena.com/images/anime/11/56247.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (18419, 'Boku no Imouto wa \"Osaka Okan\": Uchi no Oniichan wa Tokyo Rule', NULL, 'Special', 'Original', 1, 4, 7583, 6115, 5.89, 'https://myanimelist.cdn-dena.com/images/anime/9/49317.jpg'),
 (18441, 'Blood Lad: Wagahai wa Neko de wa Nai', 'Blood Lad OVA', 'OVA', 'Manga', 1, 27, 2483, 1271, 7.28, 'https://myanimelist.cdn-dena.com/images/anime/2/52611.jpg'),
 (18465, 'Genshiken Nidaime', 'Genshiken Second Season', 'TV', 'Manga', 13, 24, 1572, 1915, 7.52, 'https://myanimelist.cdn-dena.com/images/anime/11/52935.jpg'),
@@ -6678,7 +6678,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (23199, 'Durarara!!x2 Shou', 'Durarara!! x2 Shou', 'TV', 'Light novel', 12, 24, 421, 263, 8.11, 'https://myanimelist.cdn-dena.com/images/anime/12/67743.jpg'),
 (23201, 'Sengoku Basara: Judge End', 'Sengoku BASARA: End of Judgement', 'TV', 'Game', 12, 24, 3791, 2776, 6.94, 'https://myanimelist.cdn-dena.com/images/anime/12/62511.jpg'),
 (23209, 'Sora no Method', 'Celestial Method', 'TV', 'Original', 13, 24, 4372, 1307, 6.79, 'https://myanimelist.cdn-dena.com/images/anime/10/62485.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (23213, 'Kantoku Fuyuki Todoki', 'Insufficient Direction', 'TV', 'Manga', 13, 3, 7524, 4900, 5.92, 'https://myanimelist.cdn-dena.com/images/anime/11/60065.jpg'),
 (23225, 'Yuru Yuri Nachuyachumi!', NULL, 'OVA', 'Manga', 1, 63, 624, 1751, 7.95, 'https://myanimelist.cdn-dena.com/images/anime/2/73281.jpg'),
 (23227, 'Mikakunin de Shinkoukei: Kamoniku tte Midori-ppoi Aji ga Suru no ne.', NULL, 'OVA', '4-koma manga', 1, 11, 2859, 2178, 7.19, 'https://myanimelist.cdn-dena.com/images/anime/3/64479.jpg'),
@@ -6988,7 +6988,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (28595, 'Pac-World', NULL, 'TV', 'Game', 52, 25, 8581, 9834, 5.37, 'https://myanimelist.cdn-dena.com/images/anime/7/75298.jpg'),
 (28607, 'Hetalia: The World Twinkle', 'Hetalia: The World Twinkle', 'ONA', 'Manga', 15, 5, 1403, 2499, 7.58, 'https://myanimelist.cdn-dena.com/images/anime/12/71753.jpg'),
 (28619, 'Ranpo Kitan: Game of Laplace', 'Rampo Kitan: Game of Laplace', 'TV', 'Original', 11, 23, 4720, 1017, 6.71, 'https://myanimelist.cdn-dena.com/images/anime/5/79565.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (28621, 'Subete ga F ni Naru: The Perfect Insider', 'The Perfect Insider', 'TV', 'Novel', 11, 23, 2322, 830, 7.32, 'https://myanimelist.cdn-dena.com/images/anime/9/76071.jpg'),
 (28623, 'Koutetsujou no Kabaneri', 'Kabaneri of the Iron Fortress', 'TV', 'Original', 12, 22, 2392, 131, 7.31, 'https://myanimelist.cdn-dena.com/images/anime/12/79164.jpg'),
 (28625, 'Shisha no Teikoku', 'The Empire of Corpses', 'Movie', 'Novel', 1, 120, 3511, 1587, 7.02, 'https://myanimelist.cdn-dena.com/images/anime/4/75468.jpg'),
@@ -7143,7 +7143,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (30453, 'Dr. Slump: Arale-chan Ayaya!? Penguin Mura de TV Jack', NULL, 'Special', 'Manga', 1, 46, 10025, 10550, 5.98, 'https://myanimelist.cdn-dena.com/images/anime/10/72862.jpg'),
 (30458, 'Tokyo Ghoul: \"Jack\"', NULL, 'OVA', 'Manga', 1, 30, 1313, 772, 7.62, 'https://myanimelist.cdn-dena.com/images/anime/13/76048.jpg'),
 (30470, 'Himitsukessha Taka no Tsume DO', NULL, 'TV', 'Original', 38, 5, 10450, 11369, 4.93, 'https://myanimelist.cdn-dena.com/images/anime/7/82814.jpg'),
-(30484, 'Steins;Gate 0', NULL, 'TV', 'Visual novel', 23, 23, 4, 323, 9.15, 'https://myanimelist.cdn-dena.com/images/anime/1031/90444.jpg'),
+(30484, 'Steins;Gate 0', 'Steins;Gate 0', 'TV', 'Visual novel', 23, 23, 4, 323, 9.15, 'https://myanimelist.cdn-dena.com/images/anime/1375/93521.jpg'),
 (30499, 'Rolling☆Girls: Chibi☆Rolling☆Girls Korokoro Gekijou', NULL, 'Special', 'Original', 12, 1, 7574, 6259, 5.9, 'https://myanimelist.cdn-dena.com/images/anime/8/73386.jpg'),
 (30503, 'Noragami Aragoto', 'Noragami Aragoto', 'TV', 'Manga', 13, 24, 164, 66, 8.41, 'https://myanimelist.cdn-dena.com/images/anime/4/75627.jpg'),
 (30512, 'Hero Company', NULL, 'OVA', 'Manga', 2, 14, 10425, 9188, 5.09, 'https://myanimelist.cdn-dena.com/images/anime/7/73067.jpg'),
@@ -7298,7 +7298,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (31452, 'Norn9: Norn+Nonet', 'Norn9', 'TV', 'Visual novel', 12, 24, 4854, 1512, 6.68, 'https://myanimelist.cdn-dena.com/images/anime/4/77974.jpg'),
 (31454, 'Gundam: G no Reconguista - From the Past to the Future', NULL, 'Special', 'Original', 1, 9, 7050, 7865, 6.11, 'https://myanimelist.cdn-dena.com/images/anime/4/76243.jpg'),
 (31456, 'Code:Realize - Sousei no Himegimi', 'Code:Realize ~Guardian of Rebirth~', 'TV', 'Visual novel', 12, 23, 4877, 1651, 6.67, 'https://myanimelist.cdn-dena.com/images/anime/6/88465.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (31463, 'Maemilggot, Unsu Joeun Nal, Geurigo Bombom', 'The Road Called Life', 'Movie', 'Original', 1, 90, 11116, 11611, 5.64, 'https://myanimelist.cdn-dena.com/images/anime/11/79709.jpg'),
 (31471, 'MILPOM★', NULL, 'ONA', 'Original', 0, 5, 9369, 9063, 4.47, 'https://myanimelist.cdn-dena.com/images/anime/3/79018.jpg'),
 (31478, 'Bungou Stray Dogs', 'Bungo Stray Dogs', 'TV', 'Manga', 12, 23, 856, 160, 7.81, 'https://myanimelist.cdn-dena.com/images/anime/3/79409.jpg'),
@@ -7607,7 +7607,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (32916, 'YanYan Machiko Specials', NULL, 'Special', 'Original', 5, NULL, 12744, 13260, 3.92, 'https://myanimelist.cdn-dena.com/images/anime/4/78980.jpg'),
 (32920, 'Yongshi', 'Warrior', 'Movie', 'Other', 1, 50, 12770, 13044, 6, 'https://myanimelist.cdn-dena.com/images/anime/12/78993.jpg'),
 (32924, 'Urara Meirochou', 'Urara Meirocho', 'TV', '4-koma manga', 12, 24, 2875, 1163, 7.19, 'https://myanimelist.cdn-dena.com/images/anime/6/84119.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (32932, 'Choujuu Giga', 'Choju Jinbutsu Giga', 'ONA', 'Other', 3, 0.533333333, 6502, 8193, 6.27, 'https://myanimelist.cdn-dena.com/images/anime/7/81247.jpg'),
 (32934, 'Zonmi-chan: Meat Pie of the Dead', NULL, 'Special', 'Original', 1, 5, 8631, 8113, 5.34, 'https://myanimelist.cdn-dena.com/images/anime/8/79602.jpg'),
 (32935, 'Haikyuu!!: Karasuno Koukou VS Shiratorizawa Gakuen Koukou', 'Haikyu!! 3rd Season', 'TV', 'Manga', 10, 24, 17, 274, 8.99, 'https://myanimelist.cdn-dena.com/images/anime/7/81992.jpg'),
@@ -7918,7 +7918,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (34092, 'Norasco (Movie)', NULL, 'Movie', 'Original', 0, 2, 11527, 13507, 5.67, 'https://myanimelist.cdn-dena.com/images/anime/11/82048.jpg'),
 (34096, 'Gintama.', 'Gintama Season 5', 'TV', 'Manga', 12, 24, 13, 934, 9.02, 'https://myanimelist.cdn-dena.com/images/anime/3/83528.jpg'),
 (34100, 'Fate/kaleid liner Prisma☆Illya Movie: Sekka no Chikai', NULL, 'Movie', 'Manga', 1, 89, 489, 2115, 8.05, 'https://myanimelist.cdn-dena.com/images/anime/13/85698.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (34102, 'Sakurada Reset', 'Sagrada Reset', 'TV', 'Light novel', 24, 25, 2086, 1044, 7.39, 'https://myanimelist.cdn-dena.com/images/anime/5/84470.jpg'),
 (34103, 'Danganronpa 3: The End of Kibougamine Gakuen - Kibou-hen', 'Danganronpa 3: The End of Hope&#039;s Peak High School - Hope Arc', 'Special', 'Game', 1, 24, 774, 1216, 7.86, 'https://myanimelist.cdn-dena.com/images/anime/1295/91106.jpg'),
 (34104, 'Knight&#039;s & Magic', 'Knight’s & Magic', 'TV', 'Light novel', 13, 24, 2390, 892, 7.31, 'https://myanimelist.cdn-dena.com/images/anime/5/85914.jpg'),
@@ -8228,7 +8228,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (35427, 'Animegataris', 'Anime-Gataris', 'TV', 'Original', 12, 23, 5043, 1721, 6.63, 'https://myanimelist.cdn-dena.com/images/anime/12/89686.jpg'),
 (35434, 'Konbini Kareshi', 'Convenience Store Boy Friends', 'TV', 'Original', 12, 24, 6079, 1816, 6.38, 'https://myanimelist.cdn-dena.com/images/anime/4/86243.jpg'),
 (35443, 'Nui Nui Hinobori San Kyoudai', 'The Three Nui Nui Hinobori Brothers', 'ONA', 'Other', 0, 2, 11538, 10987, 6.13, 'https://myanimelist.cdn-dena.com/images/anime/3/85442.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (35448, 'Yo! Daitouryou Trap-kun', 'Hey, President Trap-kun!', 'ONA', 'Original', 2, 0.733333333, 9416, 5453, 4.27, 'https://myanimelist.cdn-dena.com/images/anime/6/85448.jpg'),
 (35450, 'Five Fire Fish', NULL, 'Movie', 'Original', 1, 1, 9214, 12214, 4.79, 'https://myanimelist.cdn-dena.com/images/anime/10/85473.jpg'),
 (35458, 'Soushin Shoujo Matoi: Kabushiki Gaisha Knight Busters', NULL, 'Special', 'Original', 1, 24, 4989, 6733, 6.65, 'https://myanimelist.cdn-dena.com/images/anime/3/85472.jpg'),
@@ -8544,7 +8544,7 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 (37143, 'Alphard x Taka no Tsume', NULL, 'ONA', 'Original', 3, 4, 9590, 12233, 4.33, 'https://myanimelist.cdn-dena.com/images/anime/1197/90147.jpg'),
 (37144, 'Nikuiyo! Galbi-kun: Kemuri ga Me ni Shimiru', NULL, 'ONA', 'Original', 5, 1, 11473, 13628, 4.5, 'https://myanimelist.cdn-dena.com/images/anime/1489/90148.jpg'),
 (37145, 'Morimori Shima no Mogu to Perol', 'Mogu&Perol', 'ONA', 'Original', 1, 8, 11333, 13902, 5.71, 'https://myanimelist.cdn-dena.com/images/anime/1760/90149.jpg');
-INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
+INSERT INTO `anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep_count`, `duration_min`, `rank_overall`, `rank_popularity`, `score`, `poster_link`) VALUES
 (37148, 'Dies Irae: Marie&#039;s Memory \"Michi ni Tsuuzu Kiseki\"', NULL, 'ONA', 'Visual novel', 1, 23, 7638, 7782, 5.87, 'https://myanimelist.cdn-dena.com/images/anime/1682/90159.jpg'),
 (37150, 'Douluo Dalu', NULL, 'ONA', 'Novel', 26, 20, 1166, 7272, 7.68, 'https://myanimelist.cdn-dena.com/images/anime/1920/90166.jpg'),
 (37175, 'Mi Yu Xing Zhe', 'Uncharted Walker', 'ONA', 'Web manga', 12, 23, 1410, 5687, 7.58, 'https://myanimelist.cdn-dena.com/images/anime/1971/90229.jpg'),
@@ -8602,19 +8602,19 @@ INSERT INTO `Anime` (`anime_id`, `title_jap`, `title_eng`, `type`, `source`, `ep
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Classification`
+-- Table structure for table `classification`
 --
 
-CREATE TABLE `Classification` (
+CREATE TABLE `classification` (
   `anime_id` int(11) NOT NULL,
-  `genre` varchar(20) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `genre` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Classification`
+-- Dumping data for table `classification`
 --
 
-INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
+INSERT INTO `classification` (`anime_id`, `genre`) VALUES
 (1, 'Action'),
 (1, 'Adventure'),
 (1, 'Comedy'),
@@ -11750,7 +11750,7 @@ INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
 (1023, 'Psychological'),
 (1023, 'Sci-Fi'),
 (1023, 'Supernatural');
-INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
+INSERT INTO `classification` (`anime_id`, `genre`) VALUES
 (1025, 'Adventure'),
 (1025, 'Comedy'),
 (1025, 'Music'),
@@ -14707,7 +14707,7 @@ INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
 (2414, 'Sci-Fi'),
 (2418, 'Action'),
 (2418, 'Adventure');
-INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
+INSERT INTO `classification` (`anime_id`, `genre`) VALUES
 (2418, 'Historical'),
 (2418, 'Samurai'),
 (2422, 'Action'),
@@ -17649,7 +17649,7 @@ INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
 (6087, 'Mecha'),
 (6087, 'Sci-Fi'),
 (6091, 'Action');
-INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
+INSERT INTO `classification` (`anime_id`, `genre`) VALUES
 (6091, 'Mystery'),
 (6093, 'Comedy'),
 (6093, 'Historical'),
@@ -20503,7 +20503,7 @@ INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
 (12355, 'Fantasy'),
 (12355, 'Slice of Life'),
 (12365, 'Comedy');
-INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
+INSERT INTO `classification` (`anime_id`, `genre`) VALUES
 (12365, 'Drama'),
 (12365, 'Romance'),
 (12365, 'Shounen'),
@@ -23255,7 +23255,7 @@ INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
 (24439, 'Vampire'),
 (24459, 'Fantasy'),
 (24469, 'Action');
-INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
+INSERT INTO `classification` (`anime_id`, `genre`) VALUES
 (24469, 'Mecha'),
 (24469, 'Sci-Fi'),
 (24471, 'Comedy'),
@@ -26017,7 +26017,7 @@ INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
 (33032, 'Comedy'),
 (33032, 'Fantasy'),
 (33032, 'Historical');
-INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
+INSERT INTO `classification` (`anime_id`, `genre`) VALUES
 (33032, 'Samurai'),
 (33032, 'Seinen'),
 (33033, 'Music'),
@@ -28771,19 +28771,19 @@ INSERT INTO `Classification` (`anime_id`, `genre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Created`
+-- Table structure for table `created`
 --
 
-CREATE TABLE `Created` (
+CREATE TABLE `created` (
   `studio_id` int(11) NOT NULL,
   `anime_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Created`
+-- Dumping data for table `created`
 --
 
-INSERT INTO `Created` (`studio_id`, `anime_id`) VALUES
+INSERT INTO `created` (`studio_id`, `anime_id`) VALUES
 (1, 21707),
 (1, 30290),
 (1, 31055),
@@ -33270,7 +33270,7 @@ INSERT INTO `Created` (`studio_id`, `anime_id`) VALUES
 (390, 8539),
 (390, 8687),
 (390, 8764);
-INSERT INTO `Created` (`studio_id`, `anime_id`) VALUES
+INSERT INTO `created` (`studio_id`, `anime_id`) VALUES
 (390, 8894),
 (390, 8972),
 (390, 9028),
@@ -34912,19 +34912,19 @@ INSERT INTO `Created` (`studio_id`, `anime_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Genre`
+-- Table structure for table `genre`
 --
 
-CREATE TABLE `Genre` (
-  `genre_name` varchar(20) COLLATE utf8_bin NOT NULL,
-  `genre_desc` text COLLATE utf8_bin
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+CREATE TABLE `genre` (
+  `genre_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `genre_desc` text CHARACTER SET utf8 COLLATE utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Genre`
+-- Dumping data for table `genre`
 --
 
-INSERT INTO `Genre` (`genre_name`, `genre_desc`) VALUES
+INSERT INTO `genre` (`genre_name`, `genre_desc`) VALUES
 ('Action', 'Plays out mainly through a clash of physical forces. Frequently these stories have fast cuts, tough characters making quick decisions and usually a beautiful girl nearby. Anything quick and most likely a thin storyline.'),
 ('Adventure', 'Exploring new places, environments or situations. This is often associated with people on long journeys to places far away encountering amazing things, usually not in an epic but in a rather gripping and interesting way.'),
 ('Cars', 'Anime whose central theme revolves around cars and probably car races. A single character\'s obsession for cars does not mean that it should belong to this genre. Most of these stories also are in the action genre.'),
@@ -34967,19 +34967,19 @@ INSERT INTO `Genre` (`genre_name`, `genre_desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Licensed`
+-- Table structure for table `licensed`
 --
 
-CREATE TABLE `Licensed` (
+CREATE TABLE `licensed` (
   `lic_id` int(11) NOT NULL,
   `anime_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Licensed`
+-- Dumping data for table `licensed`
 --
 
-INSERT INTO `Licensed` (`lic_id`, `anime_id`) VALUES
+INSERT INTO `licensed` (`lic_id`, `anime_id`) VALUES
 (1, 21),
 (1, 154),
 (1, 350),
@@ -37780,19 +37780,19 @@ INSERT INTO `Licensed` (`lic_id`, `anime_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Licensor`
+-- Table structure for table `licensor`
 --
 
-CREATE TABLE `Licensor` (
+CREATE TABLE `licensor` (
   `lic_id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `lic_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Licensor`
+-- Dumping data for table `licensor`
 --
 
-INSERT INTO `Licensor` (`lic_id`, `name`) VALUES
+INSERT INTO `licensor` (`lic_id`, `lic_name`) VALUES
 (1, '4Kids Entertainment'),
 (2, 'Active'),
 (3, 'Adult Source Media'),
@@ -37802,7 +37802,7 @@ INSERT INTO `Licensor` (`lic_id`, `name`) VALUES
 (7, 'AnimEigo'),
 (8, 'Aniplex of America'),
 (9, 'Bandai'),
-(10, 'Bandai Entertainment'),
+(10, 'Funimation'),
 (11, 'Bandai Namco Games'),
 (12, 'Bandai Visual USA'),
 (13, 'bilibili'),
@@ -37859,25 +37859,26 @@ INSERT INTO `Licensor` (`lic_id`, `name`) VALUES
 (64, 'Viz Media'),
 (65, 'Voyager Entertainment'),
 (66, 'Walt Disney Studios'),
-(67, 'Warner Bros.');
+(67, 'Warner Bros.'),
+(68, 'Funimation');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Relationship`
+-- Table structure for table `relationship`
 --
 
-CREATE TABLE `Relationship` (
+CREATE TABLE `relationship` (
   `anime1_id` int(11) NOT NULL,
   `anime2_id` int(11) NOT NULL,
-  `relation` varchar(30) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `relation` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Relationship`
+-- Dumping data for table `relationship`
 --
 
-INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
+INSERT INTO `relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 (1, 5, 'Side story'),
 (1, 173, 'Adaptation'),
 (1, 4037, 'Summary'),
@@ -39882,7 +39883,7 @@ INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 (2159, 3887, 'Side story'),
 (2159, 7720, 'Sequel'),
 (2159, 8423, 'Summary');
-INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
+INSERT INTO `relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 (2165, 3710, 'Spin-off'),
 (2165, 5688, 'Alternative version'),
 (2165, 6971, 'Alternative version'),
@@ -41775,7 +41776,7 @@ INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 (10444, 8624, 'Prequel'),
 (10444, 11385, 'Sequel'),
 (10447, 478, 'Prequel');
-INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
+INSERT INTO `relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 (10447, 30381, 'Other'),
 (10447, 30382, 'Sequel'),
 (10456, 12487, 'Sequel'),
@@ -43652,7 +43653,7 @@ INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 (28891, 32935, 'Sequel'),
 (28891, 35110, 'Summary'),
 (28891, 35321, 'Summary');
-INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
+INSERT INTO `relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 (28891, 35806, 'Side story'),
 (28907, 31637, 'Sequel'),
 (28911, 1852, 'Full story'),
@@ -45391,19 +45392,19 @@ INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Studio`
+-- Table structure for table `studio`
 --
 
-CREATE TABLE `Studio` (
+CREATE TABLE `studio` (
   `studio_id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `studio_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Studio`
+-- Dumping data for table `studio`
 --
 
-INSERT INTO `Studio` (`studio_id`, `name`) VALUES
+INSERT INTO `studio` (`studio_id`, `studio_name`) VALUES
 (1, '10Gauge'),
 (2, '2:10 Animation'),
 (3, '3xCube'),
@@ -45877,115 +45878,152 @@ INSERT INTO `Studio` (`studio_id`, `name`) VALUES
 (471, 'Yokohama Animation Lab'),
 (472, 'Yumeta Company'),
 (473, 'Zero-G'),
-(474, 'Zexcs');
+(474, 'Zexcs'),
+(475, 'Kyoto Animation');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `email` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `password` varchar(100) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
+(1, 'justinealvaro15', 'treemuncher090@gmail.com', '1fa3356b1eb65f144a367ff8560cb406');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `Aired`
+-- Indexes for table `aired`
 --
-ALTER TABLE `Aired`
+ALTER TABLE `aired`
   ADD PRIMARY KEY (`year`,`season`,`anime_id`),
   ADD KEY `anime_id` (`anime_id`);
 
 --
--- Indexes for table `Airing`
+-- Indexes for table `airing`
 --
-ALTER TABLE `Airing`
+ALTER TABLE `airing`
   ADD PRIMARY KEY (`year`,`season`);
 
 --
--- Indexes for table `Anime`
+-- Indexes for table `anime`
 --
-ALTER TABLE `Anime`
+ALTER TABLE `anime`
   ADD PRIMARY KEY (`anime_id`);
 
 --
--- Indexes for table `Classification`
+-- Indexes for table `classification`
 --
-ALTER TABLE `Classification`
+ALTER TABLE `classification`
   ADD PRIMARY KEY (`anime_id`,`genre`),
   ADD KEY `genre` (`genre`);
 
 --
--- Indexes for table `Created`
+-- Indexes for table `created`
 --
-ALTER TABLE `Created`
+ALTER TABLE `created`
   ADD PRIMARY KEY (`studio_id`,`anime_id`),
   ADD KEY `anime_id` (`anime_id`);
 
 --
--- Indexes for table `Genre`
+-- Indexes for table `genre`
 --
-ALTER TABLE `Genre`
+ALTER TABLE `genre`
   ADD PRIMARY KEY (`genre_name`);
 
 --
--- Indexes for table `Licensed`
+-- Indexes for table `licensed`
 --
-ALTER TABLE `Licensed`
+ALTER TABLE `licensed`
   ADD PRIMARY KEY (`lic_id`,`anime_id`),
   ADD KEY `anime_id` (`anime_id`);
 
 --
--- Indexes for table `Licensor`
+-- Indexes for table `licensor`
 --
-ALTER TABLE `Licensor`
+ALTER TABLE `licensor`
   ADD PRIMARY KEY (`lic_id`);
 
 --
--- Indexes for table `Relationship`
+-- Indexes for table `relationship`
 --
-ALTER TABLE `Relationship`
+ALTER TABLE `relationship`
   ADD PRIMARY KEY (`anime1_id`,`anime2_id`,`relation`),
   ADD KEY `anime2_id` (`anime2_id`);
 
 --
--- Indexes for table `Studio`
+-- Indexes for table `studio`
 --
-ALTER TABLE `Studio`
+ALTER TABLE `studio`
   ADD PRIMARY KEY (`studio_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `Aired`
+-- Constraints for table `aired`
 --
-ALTER TABLE `Aired`
-  ADD CONSTRAINT `Aired_ibfk_1` FOREIGN KEY (`year`,`season`) REFERENCES `Airing` (`year`, `season`),
-  ADD CONSTRAINT `Aired_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `Anime` (`anime_id`);
+ALTER TABLE `aired`
+  ADD CONSTRAINT `Aired_ibfk_1` FOREIGN KEY (`year`,`season`) REFERENCES `airing` (`year`, `season`),
+  ADD CONSTRAINT `Aired_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
--- Constraints for table `Classification`
+-- Constraints for table `classification`
 --
-ALTER TABLE `Classification`
-  ADD CONSTRAINT `Classification_ibfk_1` FOREIGN KEY (`anime_id`) REFERENCES `Anime` (`anime_id`),
-  ADD CONSTRAINT `Classification_ibfk_2` FOREIGN KEY (`genre`) REFERENCES `Genre` (`genre_name`);
+ALTER TABLE `classification`
+  ADD CONSTRAINT `Classification_ibfk_1` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
+  ADD CONSTRAINT `Classification_ibfk_2` FOREIGN KEY (`genre`) REFERENCES `genre` (`genre_name`);
 
 --
--- Constraints for table `Created`
+-- Constraints for table `created`
 --
-ALTER TABLE `Created`
-  ADD CONSTRAINT `Created_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `Studio` (`studio_id`),
-  ADD CONSTRAINT `Created_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `Anime` (`anime_id`);
+ALTER TABLE `created`
+  ADD CONSTRAINT `Created_ibfk_1` FOREIGN KEY (`studio_id`) REFERENCES `studio` (`studio_id`),
+  ADD CONSTRAINT `Created_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
--- Constraints for table `Licensed`
+-- Constraints for table `licensed`
 --
-ALTER TABLE `Licensed`
-  ADD CONSTRAINT `Licensed_ibfk_1` FOREIGN KEY (`lic_id`) REFERENCES `Licensor` (`lic_id`),
-  ADD CONSTRAINT `Licensed_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `Anime` (`anime_id`);
+ALTER TABLE `licensed`
+  ADD CONSTRAINT `Licensed_ibfk_1` FOREIGN KEY (`lic_id`) REFERENCES `licensor` (`lic_id`),
+  ADD CONSTRAINT `Licensed_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
--- Constraints for table `Relationship`
+-- Constraints for table `relationship`
 --
-ALTER TABLE `Relationship`
-  ADD CONSTRAINT `Relationship_ibfk_1` FOREIGN KEY (`anime1_id`) REFERENCES `Anime` (`anime_id`),
-  ADD CONSTRAINT `Relationship_ibfk_2` FOREIGN KEY (`anime2_id`) REFERENCES `Anime` (`anime_id`);
+ALTER TABLE `relationship`
+  ADD CONSTRAINT `Relationship_ibfk_1` FOREIGN KEY (`anime1_id`) REFERENCES `anime` (`anime_id`),
+  ADD CONSTRAINT `Relationship_ibfk_2` FOREIGN KEY (`anime2_id`) REFERENCES `anime` (`anime_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
