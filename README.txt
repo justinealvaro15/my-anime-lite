@@ -16,3 +16,4 @@ Santos, Kenneth
 
 [12/01] Added registration and login; Implemented info display on Anime Page.
 [12/02] Added update anime and create anime feature.
+[12/02] Added delete feature and sidenav+link redirection; fixed minor bugs
