@@ -15,3 +15,4 @@ Santos, Kenneth
 [11/24] Added an exported SQL file (project.sql) from phpMyAdmin that contains all the SQL files for easier importation.
 
 [12/01] Added registration and login; Implemented info display on Anime Page.
+[12/02] Added update anime and create anime feature.
