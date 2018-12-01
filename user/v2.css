@@ -190,7 +190,7 @@ div.img-title{
 	display: inline;
 	float: left;
 	margin-bottom: 0.5rem;
-	overflow: auto;
+	overflow: visible;
 	white-space: pre-wrap;
 }
 div.img-title a.title{
