@@ -8,7 +8,7 @@ if(!isset($_SESSION)){
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db_name = 'project';
+$db_name = 'myanimelite';
 
 $connection = mysqli_connect($host, $user, $pass, $db_name);
 
