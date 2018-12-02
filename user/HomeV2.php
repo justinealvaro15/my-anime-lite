@@ -108,7 +108,7 @@
 		<div class="gallery">
 			
 			<?php 
-				$sql="SELECT poster_link, title_eng, title_jap FROM Anime, Aired WHERE year=2018 AND season='Winter' AND Aired.anime_id = Anime.anime_id ORDER BY Anime.rank_popularity ASC LIMIT 20";
+				$sql="SELECT poster_link, title_eng, title_jap, Anime.anime_id FROM Anime, Aired WHERE year=2018 AND season='Winter' AND Aired.anime_id = Anime.anime_id ORDER BY Anime.rank_popularity ASC LIMIT 20";
 				$result=mysqli_query($connection,$sql);
 
 				if ($result->num_rows > 0) {
@@ -116,8 +116,8 @@
 				    while($row = $result->fetch_assoc()) {
 				    	if($row['title_jap']!=NULL){
 				    		if($row['title_eng']!=NULL){
-				    			echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title'>".$row["title_eng"]."</a></div>";}
-				    		else echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title'>".$row["title_jap"]."</a></div>";
+				    			echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["anime_id"]."'>".$row["title_eng"]."</a></div>";}
+				    		else echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["anime_id"]."'>".$row["title_jap"]."</a></div>";
 				    	}
 				    }
 				} else {
