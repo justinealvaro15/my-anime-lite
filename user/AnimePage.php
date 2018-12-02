@@ -23,6 +23,9 @@
 
 <div class="sidenav">
 	<h2>MyAnimeLite</h2>
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
+	<?php endif ?>
 	<a href="HomeV2.php"> Home</a>
 	<a href="MoviesPage.php"> Movies</a>
 	<a href="AddAnime.php"> Add Anime</a>
@@ -42,7 +45,9 @@
 				}
 			?>
 		</div>
-
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a href="../index.php?logout='1'">logout</a>
+	<?php endif ?>
 </div>
 <!-----------------------THE BODY ------------------------>
 <body>
@@ -79,17 +84,32 @@
 		echo "<h3>Type: <span class='data'>".$result["type"]."</span></h3>";
 		echo "<h3>Source: <span class='data'>".$result["source"]."</span></h3>";
 		echo "<h3>Episode Count: <span class='data'>".$result["ep_count"]."</span></h3>";
-		echo "<h3>Duration: <span class='data'>".$result["duration_min"]."</span></h3>";
+		echo "<h3>Duration: <span class='data'>".$result["duration_min"]." min.</span></h3>";
 
 		echo "<h3>Aired: <span class='data'>".$result["season"]." ".$result["year"]."</span></h3>";
 		echo "<h3>Studio: <span class='data'>".$result["studio_name"]."</span></h3>";
 		echo "<h3>Licensor: <span class='data'>".$result["lic_name"]."</span></h3>";
-		echo "<br><br>";
+
+		$sql="SELECT genre FROM classification WHERE anime_id = {$_SESSION['link']}";
+		$result2=mysqli_query($connection,$sql);
+
+		// var_dump($result);
+		if ($result2->num_rows > 0) {
+		// output data of each row
+			echo "<h3>Genre:</h3>";
+			while($row = $result2->fetch_assoc()) {
+				echo "<a class='data' href='CategoryPage.php?link=".$row['genre']."'>".$row['genre']."</a>";
+			}
+		} else {
+			echo "";
+		}
+
+		echo "<br><br><br><br>";
 
 		echo "<h4>";
-		echo "<a href='UpdateAnime.php?anime_id=".$result["anime_id"]."'>Update</a>";
-		echo "&nbsp &nbsp";
-		echo "<a href='DeleteAnime.php?anime_id=".$result["anime_id"]."'>Delete</a>";
+		echo "<a class='link' href='UpdateAnime.php?anime_id=".$result["anime_id"]."'>Update</a>";
+		echo "&nbsp &nbsp &nbsp";
+		echo "<a class='link' href='DeleteAnime.php?anime_id=".$result["anime_id"]."'>Delete</a>";
 		echo "</h4>";
 	?>
 
