@@ -1,7 +1,7 @@
 
 CREATE TABLE Studio(
 	studio_id	INT,
-	name		VARCHAR(50) NOT NULL,
+	studio_name	VARCHAR(50) NOT NULL,
 	PRIMARY KEY (studio_id)
 );
 
