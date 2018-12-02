@@ -13,27 +13,32 @@
 </head>
 
 <div class="sidenav">
-    <h2>MyAnimeLite</h2>
-    <a href="HomeV2.php"> Home</a>
-    <a href="MoviesPage.php"> Movies</a>
-    <a href="AddAnime.php"> Add Anime</a>
-    <a> Genres: </a>
-        <div class="dropdown-content">
-            <?php 
-                $sql="SELECT genre_name FROM Genre";
-                $result=mysqli_query($connection,$sql);
+	<h2>MyAnimeLite</h2>
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
+	<?php endif ?>
+	<a href="HomeV2.php"> Home</a>
+	<a href="MoviesPage.php"> Movies</a>
+	<a href="AddAnime.php"> Add Anime</a>
+	<a> Genres: </a>
+		<div class="dropdown-content">
+			<?php 
+				$sql="SELECT genre_name FROM Genre";
+				$result=mysqli_query($connection,$sql);
 
-                if ($result->num_rows > 0) {
-                // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
-                    }
-                } else {
-                    echo "0 results";
-                }
-            ?>
-        </div>
-
+				if ($result->num_rows > 0) {
+			    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				    	echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
+				    }
+				} else {
+				    echo "0 results";
+				}
+			?>
+		</div>
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a href="../index.php?logout='1'">logout</a>
+	<?php endif ?>
 </div>
 
 <?php
@@ -57,7 +62,8 @@
         if(isset($_POST["button"])){
             mysqli_query($connection, "DELETE FROM aired WHERE anime_id='$anime_id'");
             mysqli_query($connection, "DELETE FROM created WHERE anime_id='$anime_id'");
-            mysqli_query($connection, "DELETE FROM licensed WHERE anime_id='$anime_id'");
+			mysqli_query($connection, "DELETE FROM licensed WHERE anime_id='$anime_id'");
+			mysqli_query($connection, "DELETE FROM classification WHERE anime_id='$anime_id'");
             mysqli_query($connection, "DELETE FROM anime WHERE anime_id='$anime_id'");
 
             header("Location: HomeV2.php");

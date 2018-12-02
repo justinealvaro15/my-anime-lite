@@ -13,27 +13,32 @@
 </head>
 
 <div class="sidenav">
-    <h2>MyAnimeLite</h2>
-    <a href="HomeV2.php"> Home</a>
-    <a href="MoviesPage.php"> Movies</a>
-    <a href="AddAnime.php"> Add Anime</a>
-    <a> Genres: </a>
-        <div class="dropdown-content">
-            <?php 
-                $sql="SELECT genre_name FROM Genre";
-                $result=mysqli_query($connection,$sql);
+	<h2>MyAnimeLite</h2>
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
+	<?php endif ?>
+	<a href="HomeV2.php"> Home</a>
+	<a href="MoviesPage.php"> Movies</a>
+	<a href="AddAnime.php"> Add Anime</a>
+	<a> Genres: </a>
+		<div class="dropdown-content">
+			<?php 
+				$sql="SELECT genre_name FROM Genre";
+				$result=mysqli_query($connection,$sql);
 
-                if ($result->num_rows > 0) {
-                // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
-                    }
-                } else {
-                    echo "0 results";
-                }
-            ?>
-        </div>
-
+				if ($result->num_rows > 0) {
+			    // output data of each row
+				    while($row = $result->fetch_assoc()) {
+				    	echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
+				    }
+				} else {
+				    echo "0 results";
+				}
+			?>
+		</div>
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a href="../index.php?logout='1'">logout</a>
+	<?php endif ?>
 </div>
 
 
@@ -197,7 +202,7 @@ if(isset($_POST["button"])){
         $new_lic_name AND
         $new_poster_link){
 
-            $sql1 = "INSERT INTO Anime
+            $sql1 = "INSERT INTO anime
             (anime_id, title_jap, title_eng, score, rank_overall, rank_popularity, `type`, source, ep_count, duration_min, poster_link)
             VALUES
             ('$new_anime_id', '$new_title_jap', '$new_title_eng', '$new_score', '$new_rank_overall', '$new_rank_popularity', '$new_type', '$new_source', '$new_ep_count', '$new_duration_min', '$new_poster_link')";
@@ -211,6 +216,12 @@ if(isset($_POST["button"])){
             mysqli_query($connection,"INSERT INTO `created` (studio_id, anime_id) VALUES ('$new_studio_id', '$new_anime_id')");
 
             mysqli_query($connection,"INSERT INTO `aired` (year, season, anime_id) VALUES ('$new_year', '$new_season', '$new_anime_id')");
+
+            if(!empty($_POST['new_genre'])) {
+                foreach($_POST['new_genre'] as $genre) {
+                    mysqli_query($connection,"INSERT INTO `classification` (anime_id, genre) VALUES ('$new_anime_id', '$genre')");
+                }
+            }
             // var_dump($sql2);
             header("Location: HomeV2.php");
     }
@@ -312,6 +323,23 @@ if(isset($_POST["button"])){
         <label> Poster Link:</label>
         <input type="text" name="new_poster_link" value="<?php echo $new_poster_link ?>">
         <small class="error"><?php echo $new_poster_link_error ?></small>
+    </div>
+
+    <div class="checkboxes">
+        <label> Genre:</label>
+
+        <?php
+            $sql="SELECT genre_name FROM Genre";
+            $result=mysqli_query($connection,$sql);
+
+            if ($result->num_rows > 0) {
+            // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "<input type='checkbox' name='new_genre[]' value='".$row['genre_name']."'><a>".$row['genre_name']."</a><br>";
+                }
+            }
+        ?>
+        
     </div>
 
      <div class="input-group">

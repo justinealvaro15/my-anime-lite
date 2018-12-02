@@ -22,6 +22,9 @@
 
 <div class="sidenav">
 	<h2>MyAnimeLite</h2>
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
+	<?php endif ?>
 	<a href="HomeV2.php"> Home</a>
 	<a href="MoviesPage.php"> Movies</a>
 	<a href="AddAnime.php"> Add Anime</a>
@@ -41,7 +44,9 @@
 				}
 			?>
 		</div>
-
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a href="../index.php?logout='1'">logout</a>
+	<?php endif ?>
 </div>
 
 <!-----------------------THE BODY ------------------------>

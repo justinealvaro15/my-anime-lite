@@ -242,7 +242,6 @@ div.poster{
 }
 div.infobox{
 	position: relative;
-	height: 30rem;
 	width:45%;
 	overflow: auto;
 	left:8rem;top:5rem;
@@ -326,7 +325,20 @@ div.score-rank{
 	margin-bottom: 0px;
 	margin-top: 0px;
 	color: #f99a2c;
+	font-family: 'Ubuntu', sans-serif !important;
+	font-size: 18px;
+	font-weight: bold;
 }
+
+h4{
+	color: #f99a2c !important;
+	cursor: pointer;
+	font-family: 'Ubuntu', sans-serif !important;
+	font-size: 18px;
+	font-weight: bold;
+	/* text-decoration: underline ; */
+}
+
 h3.description a.searchres{
 	font-family: 'Questrial', sans-serif;
 	color: #681456;

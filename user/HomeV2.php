@@ -25,6 +25,9 @@
 
 <div class="sidenav">
 	<h2>MyAnimeLite</h2>
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
+	<?php endif ?>
 	<a href="HomeV2.php"> Home</a>
 	<a href="MoviesPage.php"> Movies</a>
 	<a href="AddAnime.php"> Add Anime</a>
@@ -44,7 +47,9 @@
 				}
 			?>
 		</div>
-
+	<?php  if (isset($_SESSION['username'])) : ?>
+		<a href="../index.php?logout='1'">logout</a>
+	<?php endif ?>
 </div>
 <!-----------------------THE BODY ------------------------>
 <body>	
@@ -111,8 +116,8 @@
 				    while($row = $result->fetch_assoc()) {
 				    	if($row['title_jap']!=NULL){
 				    		if($row['title_eng']!=NULL){
-				    			echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["title_jap"]."'>".$row["title_eng"]."</a></div>";}
-				    		else echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["title_jap"]."'>".$row["title_jap"]."</a></div>";
+				    			echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title'>".$row["title_eng"]."</a></div>";}
+				    		else echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title'>".$row["title_jap"]."</a></div>";
 				    	}
 				    }
 				} else {
