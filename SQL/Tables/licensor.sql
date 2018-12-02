@@ -1,7 +1,7 @@
 
 CREATE TABLE Licensor(
 	lic_id		INT,
-	name		VARCHAR(50) NOT NULL,
+	lic_name	VARCHAR(50) NOT NULL,
 	PRIMARY KEY (lic_id)
 );
 
