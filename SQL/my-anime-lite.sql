@@ -22973,6 +22973,17 @@ INSERT INTO `Studio` (`studio_id`, `studio_name`) VALUES
 (207, 'Yaoyorozu'),
 (208, 'Zexcs');
 
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
+(1, 'dabaseislife1', 'cs165WVW@up.edu.ph', '416e6987c66e47032a0bce171bb269f2'),
+(2, 'jmendoza1', 'jmendoza@cs165.com', '416e6987c66e47032a0bce171bb269f2');
+
 --
 -- Indexes for dumped tables
 --
