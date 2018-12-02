@@ -20102,14 +20102,14 @@ INSERT INTO `Licensed` (`lic_id`, `anime_id`) VALUES
 
 CREATE TABLE `Licensor` (
   `lic_id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_bin NOT NULL
+  `lic_name` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `Licensor`
 --
 
-INSERT INTO `Licensor` (`lic_id`, `name`) VALUES
+INSERT INTO `Licensor` (`lic_id`, `lic_name`) VALUES
 (1, '4Kids Entertainment'),
 (2, 'ADV Films'),
 (3, 'Anchor Bay Films'),
@@ -22756,14 +22756,14 @@ INSERT INTO `Relationship` (`anime1_id`, `anime2_id`, `relation`) VALUES
 
 CREATE TABLE `Studio` (
   `studio_id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_bin NOT NULL
+  `studio_name` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `Studio`
 --
 
-INSERT INTO `Studio` (`studio_id`, `name`) VALUES
+INSERT INTO `Studio` (`studio_id`, `studio_name`) VALUES
 (1, '3xCube'),
 (2, '8bit'),
 (3, 'A-1 Pictures'),
