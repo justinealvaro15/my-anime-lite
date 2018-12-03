@@ -12,7 +12,7 @@
 <title>MyAnimeLite</title>
 <!-----------------------THE HEAD ------------------------>
 <header>
-	<div class="searchbar"><form action="searchpage.php" method="post">
+	<div class="searchbar"><form action="SearchPage.php" method="post">
 		<button type="submit"><i class="fa fa-search"></i></button>
 		<input type="text" placeholder="Search..." name="input" value="">
 	
