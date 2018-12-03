@@ -58,9 +58,9 @@
 	<?php 
 		/* DISPLAY GENRE TITLE */
 		if(isset($_GET['link'])){$_SESSION['link'] = $_GET['link'];}
-		echo "<h1>".$_SESSION['link']."</h1>" ; 
+		echo "<h1>".$_SESSION['link']; 
 
-
+		echo "<a href='DeleteStudio.php'><span class='rename-delete'>Delete</a>&nbsp &nbsp &nbsp<a href='RenameStudio.php'><span class='rename-delete'>Rename</span></a></h1>";
 		/* DISPLAY IMAGES */
 			$query="SELECT * FROM Anime INNER JOIN Created ON Anime.anime_id = Created.anime_id INNER JOIN Studio ON Created.studio_id = Studio.studio_id WHERE Studio.studio_name ='". $_SESSION['link']."'";
 			$result=mysqli_query($connection,$query);
