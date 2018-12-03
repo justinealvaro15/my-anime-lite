@@ -53,7 +53,6 @@
         $result = mysqli_fetch_assoc($get_genre);
 
         if(isset($_POST["button"])){
-            mysqli_query($connection, "DELETE FROM Classification WHERE genre='$genre_name'");
             mysqli_query($connection, "DELETE FROM Genre WHERE genre_name='$genre_name'");
 
             header("Location: HomeV2.php");
