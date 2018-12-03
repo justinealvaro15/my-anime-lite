@@ -22764,6 +22764,7 @@ CREATE TABLE `Studio` (
 --
 
 INSERT INTO `Studio` (`studio_id`, `studio_name`) VALUES
+(99999, '(Not Available)'),
 (1, '3xCube'),
 (2, '8bit'),
 (3, 'A-1 Pictures'),

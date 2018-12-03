@@ -55,7 +55,14 @@
         $studio_name = $result["studio_name"];
 
         if(isset($_POST["button"])){
-            mysqli_query($connection, "DELETE FROM Studio WHERE studio_id='$studio_id'");
+			
+			$sql2 = "UPDATE Created
+			SET studio_id = '99999'
+			WHERE studio_id = '$studio_id'";
+
+			mysqli_query($connection,$sql2) or die(mysqli_error($connection));
+
+			mysqli_query($connection, "DELETE FROM Studio WHERE studio_id='$studio_id'");
 
             header("Location: HomeV2.php");
         }

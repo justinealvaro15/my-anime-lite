@@ -74,7 +74,7 @@
                     mysqli_query($connection,$sql2) or die(mysqli_error($connection));
 
                     // var_dump($sql2);
-                    header("Location: HomeV2.php");
+                    header("Location: StudiosPage.php");
             }
         }
 ?>
