@@ -51,7 +51,6 @@
 		
     $get_genre = mysqli_query($connection,$sql1) or die(mysqli_error($connection));
 
-    echo mysqli_num_rows($get_genre);
     // Get original values first
     if(mysqli_num_rows($get_genre)>0){
         while($result = mysqli_fetch_assoc($get_genre)){
@@ -85,7 +84,7 @@
         }
 ?>
 
-<form class="container" method="POST">
+<form class="container" method="POST" id="genre_form">
 
     <div class="input-group">
         <h2>Edit genre description of <font color="#f99a2c"><?php echo $genre_name ?></h2>
@@ -93,11 +92,13 @@
     
     <div class="input-group">
         <label>Description:</label>
-        <input type="text" name="new_genre_desc" value="<?php echo $genre_desc ?>">
+        
+        <div align="center">
+            <textarea font-family='Ubuntu' font-size="18px" rows="10" cols="67" name="new_genre_desc" wrap="soft" form="genre_form"><?php echo $genre_desc ?></textarea>
+        </div>
+        
+        <!-- <input type="text" name="new_genre_desc" value="<?php echo $genre_desc ?>"> -->
         <small class="error"><?php echo $new_genre_desc_error ?></small>
-    </div>
-
-     <div class="input-group">
         <input type="submit" name="button" value="Update" class="btn">
     </div>
 

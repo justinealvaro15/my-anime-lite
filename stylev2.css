@@ -69,7 +69,7 @@ form, .content {
 	background: #f99a2c;
 	border: none;
 	border-radius: 5px;
-	width: 100% !important;
+	width: 20% !important;
 	font-family:  'Questrial', sans-serif;
 }
 
@@ -107,6 +107,15 @@ a{
 	font-family:  'Questrial', sans-serif;
 }
 
+.textarea {
+	font-family:  'Questrial', sans-serif !important;
+	font-size: 12px !important;
+}
+
+.description{
+	font-family:  'Questrial', sans-serif !important;
+	font-size: 12px !important;
+}
 /* body {
     background-color:#3f333f;
 } */
