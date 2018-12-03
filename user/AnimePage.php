@@ -90,7 +90,7 @@
 		echo "<h3>Studio: <span class='data'>".$result["studio_name"]."</span></h3>";
 		echo "<h3>Licensor: <span class='data'>".$result["lic_name"]."</span></h3>";
 
-		$sql="SELECT genre FROM classification WHERE anime_id = {$_SESSION['link']}";
+		$sql="SELECT genre FROM Classification WHERE anime_id = {$_SESSION['link']}";
 		$result2=mysqli_query($connection,$sql);
 
 		// var_dump($result);
