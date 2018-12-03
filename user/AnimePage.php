@@ -12,7 +12,7 @@
 <title>MyAnimeLite</title>
 <!-----------------------THE HEAD ------------------------>
 <header>
-	<div class="searchbar"><form action="SearchPage.php" method="post">
+	<div class="searchbar"><form action="searchpage.php" method="post">
 		<button type="submit"><i class="fa fa-search"></i></button>
 		<input type="text" placeholder="Search..." name="input" value="">
 	
@@ -22,13 +22,14 @@
 </head>
 
 <div class="sidenav">
-	<h2>MyAnimeLite</h2>
+	<center>
 	<?php  if (isset($_SESSION['username'])) : ?>
-		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
+		<a>Welcome <?php echo "<i class='username'>".$_SESSION['username']."</i>"; ?></a>
 	<?php endif ?>
 	<a href="HomeV2.php"> Home</a>
 	<a href="MoviesPage.php"> Movies</a>
-	<a href="AddAnime.php"> Add Anime</a>
+	<a href="StudiosPage.php"> Studios</a>
+	
 	<a> Genres: </a>
 		<div class="dropdown-content">
 			<?php 
@@ -45,8 +46,9 @@
 				}
 			?>
 		</div>
+	<strong><a href="AddAnime.php"> Add Anime</a></strong>
 	<?php  if (isset($_SESSION['username'])) : ?>
-		<a href="../index.php?logout='1'">logout</a>
+		<a id="logout" href="../index.php?logout='1'">logout</span></a>
 	<?php endif ?>
 </div>
 <!-----------------------THE BODY ------------------------>
@@ -74,7 +76,7 @@
 		// var_dump($result);
 
 		// Display Data
-		echo "<h1>". $result["title_jap"]."<t> <span class='yr'>".$result["year"]."</span></h1>";
+		echo "<h1 class='animetitle'>". $result["title_jap"]."<t> <span class='yr'>".$result["year"]."</span></h1>";
 		echo "<div class='score-rank'><h3 class='score-rank'><span class='score-rank-data'>". $result["score"]."<br></span>Score</h3></div>";
 		echo "<div class='score-rank'><h3 class='score-rank'><span class='score-rank-data'>#". $result["rank_overall"]."<br></span>Ranked</h3></div>";
 		echo "<div class='score-rank'><h3 class='score-rank'><span class='score-rank-data'>#". $result["rank_popularity"]."<br></span>Popularity</h3></div>";
@@ -96,21 +98,18 @@
 		// var_dump($result);
 		if ($result2->num_rows > 0) {
 		// output data of each row
-			echo "<h3>Genre:</h3>";
+			echo "<h3>Genre:";
 			while($row = $result2->fetch_assoc()) {
-				echo "<a class='data' href='CategoryPage.php?link=".$row['genre']."'>".$row['genre']."</a>";
-			}
+				echo "<a class='data' href='CategoryPage.php?link=".$row['genre']."'>".$row['genre']."</a> |";
+			}echo "</h3>";
 		} else {
 			echo "";
 		}
 
 		echo "<br><br><br><br>";
-
-		echo "<h4>";
-		echo "<a class='link' href='UpdateAnime.php?anime_id=".$result["anime_id"]."'>Update</a>";
+		echo "<h3><a class='link' href='UpdateAnime.php?anime_id=".$result["anime_id"]."'>Update</a>";
 		echo "&nbsp &nbsp &nbsp";
-		echo "<a class='link' href='DeleteAnime.php?anime_id=".$result["anime_id"]."'>Delete</a>";
-		echo "</h4>";
+		echo "<a class='link' href='DeleteAnime.php?anime_id=".$result["anime_id"]."'>Delete</a></h3>";
 	?>
 
 	<!-- <div class="btn-group">
@@ -128,10 +127,13 @@
 <footer></footer>
 </body>
 <script type="text/javascript">
-
-
-	function goBack() {
-    window.history.back();
-}
+(function() {
+	    var allimgs = document.images;
+	    for (var i = 0; i < allimgs.length; i++) {
+	        allimgs[i].onerror = function() {
+	            this.style.content = "url('no_logo.jpg')"; // Other elements aren't affected. 
+	        }
+	    }
+	})();
 </script>
 </html>
