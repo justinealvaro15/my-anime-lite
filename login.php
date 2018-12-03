@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="stylev2.css">
 </head>
 <body>
-	<h1>MyAnimeList</h1>	
+	<h1>MyAnimeLite</h1>	
 	<form class="container" method="post" action="login.php">
 
 		<?php include('errors.php'); ?>
