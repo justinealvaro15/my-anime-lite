@@ -54,6 +54,7 @@
 		
     $get_anime = mysqli_query($connection,$sql1);
 
+    // Get original values first
     if(mysqli_num_rows($get_anime)>0){
         while($result = mysqli_fetch_assoc($get_anime)){
             $title_jap = $result["title_jap"];
@@ -93,6 +94,7 @@
 
 
         if(isset($_POST["button"])){
+            // If empty, display error, else assign new value to $new_title_jap
             if(empty($_POST["new_title_jap"])){
                 $new_title_jap_error = "This field must not be empty";
             } else{
@@ -190,7 +192,8 @@
                 $new_poster_link = $_POST["new_poster_link"];
                 $poster_link = $new_poster_link;
             }  
-                   
+             
+            // CHECK IF THERE IS AN EMPTY FIELD
             if($new_title_jap AND 
                 $new_title_eng AND
                 $new_score AND
