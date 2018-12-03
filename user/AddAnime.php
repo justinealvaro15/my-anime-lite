@@ -13,32 +13,34 @@
 </head>
 
 <div class="sidenav">
-	<h2>MyAnimeLite</h2>
-	<?php  if (isset($_SESSION['username'])) : ?>
-		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
-	<?php endif ?>
-	<a href="HomeV2.php"> Home</a>
-	<a href="MoviesPage.php"> Movies</a>
-	<a href="AddAnime.php"> Add Anime</a>
-	<a> Genres: </a>
-		<div class="dropdown-content">
-			<?php 
-				$sql="SELECT genre_name FROM Genre";
-				$result=mysqli_query($connection,$sql);
+    <center>
+    <?php  if (isset($_SESSION['username'])) : ?>
+        <a>Welcome <?php echo "<i class='username'>".$_SESSION['username']."</i>"; ?></a>
+    <?php endif ?>
+    <a href="HomeV2.php"> Home</a>
+    <a href="MoviesPage.php"> Movies</a>
+    <a href="StudiosPage.php"> Studios</a>
+    
+    <a> Genres: </a>
+        <div class="dropdown-content">
+            <?php 
+                $sql="SELECT genre_name FROM Genre";
+                $result=mysqli_query($connection,$sql);
 
-				if ($result->num_rows > 0) {
-			    // output data of each row
-				    while($row = $result->fetch_assoc()) {
-				    	echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
-				    }
-				} else {
-				    echo "0 results";
-				}
-			?>
-		</div>
-	<?php  if (isset($_SESSION['username'])) : ?>
-		<a href="../index.php?logout='1'">logout</a>
-	<?php endif ?>
+                if ($result->num_rows > 0) {
+                // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
+                    }
+                } else {
+                    echo "0 results";
+                }
+            ?>
+        </div>
+    <strong><a href="AddAnime.php"> Add Anime</a></strong>
+    <?php  if (isset($_SESSION['username'])) : ?>
+        <a id="logout" href="../index.php?logout='1'">logout</span></a>
+    <?php endif ?>
 </div>
 
 

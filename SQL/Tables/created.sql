@@ -3,8 +3,8 @@ CREATE TABLE Created(
 	studio_id	INT,
 	anime_id	INT,
 	PRIMARY KEY (studio_id,anime_id),
-	FOREIGN KEY (studio_id) REFERENCES Studio(studio_id),
-	FOREIGN KEY (anime_id) REFERENCES Anime(anime_id)
+	FOREIGN KEY (studio_id) REFERENCES Studio(studio_id) ON DELETE CASCADE,
+	FOREIGN KEY (anime_id) REFERENCES Anime(anime_id) ON DELETE CASCADE
 	);
 
 INSERT INTO Created VALUES

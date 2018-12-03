@@ -1,5 +1,5 @@
 <?php
-	include_once ('../server.php'); 
+	include_once ('../server.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,29 +50,22 @@
 		<a id="logout" href="../index.php?logout='1'">logout</span></a>
 	<?php endif ?>
 </div>
-
 <!-----------------------THE BODY ------------------------>
 <body>
 <div class="categorybox"><span align="left">
+	 <?php 
+	 	
+	 	$query="SELECT studio_name FROM Studio";
+		$result=mysqli_query($connection,$query);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {						
+				echo "<h3 class='description'><a class='searchres' href='Studio.php?link=". $row['studio_name']. "''>". $row['studio_name']."</a></h3><br>";
+			}
+		} else {echo "0 results";}
+
+	 ?>
 	
-	<?php 
-		/* DISPLAY MOVIE HEADER */
-		echo "<h1>Movies </h1>" ; 
-
-		/* DISPLAY IMAGES */
-			$query="SELECT poster_link, title_eng, title_jap, anime_id FROM Anime WHERE type='Movie'";
-			$result=mysqli_query($connection,$query);
-
-				if ($result->num_rows > 0) {
-				    while($row = $result->fetch_assoc()) {
-				    	if($row['title_eng']!=NULL){
-							echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["anime_id"]."'>".$row["title_eng"]."</a></div>";}
-						else echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["anime_id"]."'>".$row["title_jap"]."</a></div>";
-				    }
-				} else {
-				    echo "0 results";
-				}
-	?>
 </span>
 </div>
 <footer></footer>
@@ -85,6 +78,6 @@
 	            this.style.content = "url('no_logo.jpg')"; // Other elements aren't affected. 
 	        }
 	    }
-	})();;
+	})();
 </script>
 </html>

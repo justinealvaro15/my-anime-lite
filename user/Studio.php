@@ -1,5 +1,5 @@
 <?php
-	include_once ('../server.php'); 
+	include_once ('../server.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,18 +56,19 @@
 <div class="categorybox"><span align="left">
 	
 	<?php 
-		/* DISPLAY MOVIE HEADER */
-		echo "<h1>Movies </h1>" ; 
+		/* DISPLAY GENRE TITLE */
+		if(isset($_GET['link'])){$_SESSION['link'] = $_GET['link'];}
+		echo "<h1>".$_SESSION['link']."</h1>" ; 
+
 
 		/* DISPLAY IMAGES */
-			$query="SELECT poster_link, title_eng, title_jap, anime_id FROM Anime WHERE type='Movie'";
+			$query="SELECT * FROM Anime INNER JOIN Created ON Anime.anime_id = Created.anime_id INNER JOIN Studio ON Created.studio_id = Studio.studio_id WHERE Studio.studio_name ='". $_SESSION['link']."'";
 			$result=mysqli_query($connection,$query);
 
 				if ($result->num_rows > 0) {
 				    while($row = $result->fetch_assoc()) {
-				    	if($row['title_eng']!=NULL){
-							echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["anime_id"]."'>".$row["title_eng"]."</a></div>";}
-						else echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["anime_id"]."'>".$row["title_jap"]."</a></div>";
+				    	if($row['title_eng']!=NULL)
+				        echo "<div class='img-title'><img class='gallery' src=". $row["poster_link"]."><br class='space'><a class='title' href='AnimePage.php?link=". $row["anime_id"]."'>".$row["title_eng"]."</a></div>";
 				    }
 				} else {
 				    echo "0 results";
@@ -85,6 +86,6 @@
 	            this.style.content = "url('no_logo.jpg')"; // Other elements aren't affected. 
 	        }
 	    }
-	})();;
+	})();
 </script>
 </html>
