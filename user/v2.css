@@ -121,6 +121,7 @@ p.logo{
 	overflow-y: scroll;
 	line-height: 0px;
 	border-top: 3px solid #f72a3a;
+	border-bottom: 3px solid #f72a3a;
 	object-fit: contain;
 }
 .dropdown-content a{
@@ -227,7 +228,7 @@ div.poster-hover{
 div.poster{
 	height: 30rem;
 	width: 21rem;
-	position: absolute;
+	position: relative;
 	left:0rem; top:0rem;
 	display: none;
 	background-color: #fff;
@@ -243,7 +244,7 @@ div.poster{
 div.infobox{
 	position: relative;
 	width:45%;
-	overflow: auto;
+	overflow-y: auto;
 	left:8rem;top:5rem;
 	padding-left: 1rem;
 	display: inline-block;
@@ -268,9 +269,14 @@ img.categorybox{
 img.gallery:hover, img.categorybox:hover/*, img.gallery2:hover*/{
 	opacity: 0.6;
 }
+
+.sidenav a .username{
+	color: yellow;
+	font-size:14px;
+}
 h1{
 	font-family: 'Questrial', sans-serif !important; 
-	font-size: 50px !important;
+	font-size: 50px;
 	margin-bottom: 3px ;
 	margin-top: 0px;
 	color: #f72a3a !important;
@@ -303,6 +309,7 @@ h3.description{
 h4{
 	border-top: 1px !important;
 	border-top-color: #3f333f !important;
+	text-decoration: none;
 }
 div.score-rank{
 	height: 3.8rem;
@@ -328,6 +335,7 @@ div.score-rank{
 	font-family: 'Ubuntu', sans-serif !important;
 	font-size: 18px;
 	font-weight: bold;
+	text-decoration: none;
 }
 
 h4{
@@ -344,6 +352,24 @@ h3.description a.searchres{
 	color: #681456;
 	text-decoration: none;
 
+}
+#logout{
+	color:#f72a3a;
+}
+#logout:hover{
+	color:#ccc;
+	font-weight: bolder;
+}
+.link{
+	text-decoration: none;
+	color: #ccc;
+}
+.link:hover{
+	text-decoration: underline;
+	color: #f72a3a;
+}
+hi.animetitle{
+	font-size: 40px;
 }
 footer{
 	height:100px;
