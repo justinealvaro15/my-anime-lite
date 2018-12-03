@@ -11,7 +11,7 @@
 <title>MyAnimeLite</title>
 <!-----------------------THE HEAD ------------------------>
 <header>
-	<div class="searchbar"><form action="SearchPage.php" method="post">
+	<div class="searchbar"><form action="searchpage.php" method="post">
 		<button type="submit"><i class="fa fa-search"></i></button>
 		<input type="text" placeholder="Search..." name="input" value="">
 	
@@ -21,13 +21,14 @@
 </head>
 
 <div class="sidenav">
-	<h2>MyAnimeLite</h2>
+	<center>
 	<?php  if (isset($_SESSION['username'])) : ?>
-		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
+		<a>Welcome <?php echo "<i class='username'>".$_SESSION['username']."</i>"; ?></a>
 	<?php endif ?>
 	<a href="HomeV2.php"> Home</a>
 	<a href="MoviesPage.php"> Movies</a>
-	<a href="AddAnime.php"> Add Anime</a>
+	<a href="StudiosPage.php"> Studios</a>
+	
 	<a> Genres: </a>
 		<div class="dropdown-content">
 			<?php 
@@ -44,8 +45,9 @@
 				}
 			?>
 		</div>
+	<strong><a href="AddAnime.php"> Add Anime</a></strong>
 	<?php  if (isset($_SESSION['username'])) : ?>
-		<a href="../index.php?logout='1'">logout</a>
+		<a id="logout" href="../index.php?logout='1'">logout</span></a>
 	<?php endif ?>
 </div>
 <!-----------------------THE BODY ------------------------>
@@ -77,11 +79,11 @@
 <footer></footer>
 </body>
 <script>
-	(function() {
+(function() {
 	    var allimgs = document.images;
 	    for (var i = 0; i < allimgs.length; i++) {
 	        allimgs[i].onerror = function() {
-	            this.style.display = "none"; // Other elements aren't affected. 
+	            this.style.content = "url('no_logo.jpg')"; // Other elements aren't affected. 
 	        }
 	    }
 	})();
