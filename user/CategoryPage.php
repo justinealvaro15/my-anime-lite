@@ -64,7 +64,14 @@
 			if ($result->num_rows > 0) {
 			    // output data of each row
 				    while($row = $result->fetch_assoc()) {
-				        echo "<h3 class='description'>". $row['genre_desc']."</h3><br>";
+						echo "<h3 class='description'>". $row['genre_desc']."</h3><br>";
+
+						echo "<h3 class='description'>";
+						echo "<a class='link' href='UpdateGenre.php?genre_name=".$_SESSION['link']."'>Update Description</a>";
+						echo "&nbsp &nbsp";
+						echo "<a class='link' href='DeleteGenre.php?genre_name=".$_SESSION['link']."'>Delete Genre</a>";
+						echo "</h3>";
+						echo "<br><br>";
 				    }
 				} else {echo "0 results";}
 
