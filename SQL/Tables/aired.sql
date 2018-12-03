@@ -4,8 +4,8 @@ CREATE TABLE Aired(
 	season		VARCHAR(10),
 	anime_id	INT,
 	PRIMARY KEY (year,season,anime_id),
-	FOREIGN KEY (year,season) REFERENCES Airing(year,season),
-	FOREIGN KEY (anime_id) REFERENCES Anime(anime_id)
+	FOREIGN KEY (year,season) REFERENCES Airing(year,season) ON DELETE CASCADE,
+	FOREIGN KEY (anime_id) REFERENCES Anime(anime_id) ON DELETE CASCADE
 	);
 
 INSERT INTO Aired VALUES

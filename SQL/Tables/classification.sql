@@ -3,8 +3,8 @@ CREATE TABLE Classification(
 	anime_id	INT,
 	genre		VARCHAR(20),
 	PRIMARY KEY (anime_id,genre),
-	FOREIGN KEY (anime_id) REFERENCES Anime(anime_id),
-	FOREIGN KEY (genre) REFERENCES Genre(genre_name)
+	FOREIGN KEY (anime_id) REFERENCES Anime(anime_id) ON DELETE CASCADE,
+	FOREIGN KEY (genre) REFERENCES Genre(genre_name) ON DELETE CASCADE
 	);
 
 INSERT INTO Classification VALUES

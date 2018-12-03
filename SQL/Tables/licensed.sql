@@ -3,8 +3,8 @@ CREATE TABLE Licensed(
 	lic_id		INT,
 	anime_id	INT,
 	PRIMARY KEY (lic_id,anime_id),
-	FOREIGN KEY (lic_id) REFERENCES Licensor(lic_id),
-	FOREIGN KEY (anime_id) REFERENCES Anime(anime_id)
+	FOREIGN KEY (lic_id) REFERENCES Licensor(lic_id) ON DELETE CASCADE,
+	FOREIGN KEY (anime_id) REFERENCES Anime(anime_id) ON DELETE CASCADE
 	);
 
 INSERT INTO Licensed VALUES

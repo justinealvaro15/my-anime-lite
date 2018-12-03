@@ -4,8 +4,8 @@ CREATE TABLE Relationship(
 	anime2_id	INT,
 	relation	VARCHAR(30),
 	PRIMARY KEY (anime1_id,anime2_id,relation),
-	FOREIGN KEY (anime1_id) REFERENCES Anime(anime_id),
-	FOREIGN KEY (anime2_id) REFERENCES Anime(anime_id)
+	FOREIGN KEY (anime1_id) REFERENCES Anime(anime_id) ON DELETE CASCADE,
+	FOREIGN KEY (anime2_id) REFERENCES Anime(anime_id) ON DELETE CASCADE
 	);
 
 INSERT INTO Relationship VALUES
