@@ -69,7 +69,7 @@
 
                     $sql2 = "UPDATE Studio r1
                     SET studio_name = '$new_studio_name'
-                    WHERE r1.studio_id = {$studio_id}";
+                    WHERE r1.studio_id = '$studio_id'";
 
                     mysqli_query($connection,$sql2) or die(mysqli_error($connection));
 
@@ -96,7 +96,7 @@
     </div>
 
      <div class="input-group">
-        <a href="HomeV2.php" style="color: white;">Cancel</a>
+        <a href="Studio.php" style="color: white;">Cancel</a>
     </div>
 
 </form>

@@ -56,7 +56,7 @@
 <div class="categorybox"><span align="left">
 	
 	<?php 
-		/* DISPLAY GENRE TITLE */
+		/* DISPLAY STUDIO NAME */
 		if(isset($_GET['link'])){$_SESSION['link'] = $_GET['link'];}
 		$query="SELECT * FROM Anime INNER JOIN Created ON Anime.anime_id = Created.anime_id INNER JOIN Studio ON Created.studio_id = Studio.studio_id WHERE Studio.studio_name ='". $_SESSION['link']."'";
 		$result=mysqli_query($connection,$query);
