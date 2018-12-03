@@ -11,7 +11,7 @@
 <title>MyAnimeLite</title>
 <!-----------------------THE HEAD ------------------------>
 <header>
-	<div class="searchbar"><form action="searchpage.php" method="post">
+	<div class="searchbar"><form action="SearchPage.php" method="post">
 		<button type="submit"><i class="fa fa-search"></i></button>
 		<input type="text" placeholder="Search..." name="input" value="">
 	
@@ -58,13 +58,13 @@
 	<?php 
 		/* DISPLAY GENRE TITLE */
 		if(isset($_GET['link'])){$_SESSION['link'] = $_GET['link'];}
-		echo "<h1>".$_SESSION['link']."</h1>" ; 
+		$query="SELECT * FROM Anime INNER JOIN Created ON Anime.anime_id = Created.anime_id INNER JOIN Studio ON Created.studio_id = Studio.studio_id WHERE Studio.studio_name ='". $_SESSION['link']."'";
+		$result=mysqli_query($connection,$query);
+		$result1 = $result->fetch_assoc();
 
-
+		echo "<h1>".$_SESSION['link']; 
+		echo "<a href='DeleteStudio.php?studio_id=".$result1["studio_id"]."'><span class='rename-delete'>Delete</a>&nbsp &nbsp &nbsp<a href='RenameStudio.php?studio_id=".$result1["studio_id"]."'><span class='rename-delete'>Rename</span></a></h1>";
 		/* DISPLAY IMAGES */
-			$query="SELECT * FROM Anime INNER JOIN Created ON Anime.anime_id = Created.anime_id INNER JOIN Studio ON Created.studio_id = Studio.studio_id WHERE Studio.studio_name ='". $_SESSION['link']."'";
-			$result=mysqli_query($connection,$query);
-
 				if ($result->num_rows > 0) {
 				    while($row = $result->fetch_assoc()) {
 				    	if($row['title_eng']!=NULL)

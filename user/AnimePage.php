@@ -12,7 +12,7 @@
 <title>MyAnimeLite</title>
 <!-----------------------THE HEAD ------------------------>
 <header>
-	<div class="searchbar"><form action="searchpage.php" method="post">
+	<div class="searchbar"><form action="SearchPage.php" method="post">
 		<button type="submit"><i class="fa fa-search"></i></button>
 		<input type="text" placeholder="Search..." name="input" value="">
 	
@@ -89,7 +89,7 @@
 		echo "<h3>Duration: <span class='data'>".$result["duration_min"]." min.</span></h3>";
 
 		echo "<h3>Aired: <span class='data'>".$result["season"]." ".$result["year"]."</span></h3>";
-		echo "<h3>Studio: <span class='data'>".$result["studio_name"]."</span></h3>";
+		echo "<h3>Studio: <a class='data' href='Studio.php?link=".$result["studio_name"]."'>".$result["studio_name"]."</a></h3>";
 		echo "<h3>Licensor: <span class='data'>".$result["lic_name"]."</span></h3>";
 
 		$sql="SELECT genre FROM Classification WHERE anime_id = {$_SESSION['link']}";

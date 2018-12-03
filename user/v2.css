@@ -282,10 +282,11 @@ h1{
 	color: #f72a3a !important;
 }
 h2{
-	font-family: 'Roboto', sans-serif;
-	font-size: 20px;
+	font-family: 'Questrial', sans-serif !important; 
+	font-size: 30px;
+	margin-bottom: 3px ;
 	margin-top: 0px;
-	color: #ccc;
+	color: #f72a3a !important;
 }
 h3{
 	font-family: 'Ubuntu', sans-serif !important;
@@ -369,7 +370,19 @@ h3.description a.searchres{
 	color: #f72a3a;
 }
 hi.animetitle{
-	font-size: 40px;
+	font-size: 30px !important;
+}
+.rename-delete{
+	color: #ccc !important;
+	font-family: 'Questrial', sans-serif !important;
+	font-size: 18px;
+	float: right;
+	padding-right: 2rem;
+	padding-top: 1rem;
+}
+.rename-delete:hover{
+	color: #f99a2c !important;
+	text-decoration: underline;
 }
 footer{
 	height:100px;

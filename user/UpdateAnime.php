@@ -13,32 +13,34 @@
 </head>
 
 <div class="sidenav">
-	<h2>MyAnimeLite</h2>
-	<?php  if (isset($_SESSION['username'])) : ?>
-		<a>Welcome <strong><?php echo $_SESSION['username']; ?></strong></a>
-	<?php endif ?>
-	<a href="HomeV2.php"> Home</a>
-	<a href="MoviesPage.php"> Movies</a>
-	<a href="AddAnime.php"> Add Anime</a>
-	<a> Genres: </a>
-		<div class="dropdown-content">
-			<?php 
-				$sql="SELECT genre_name FROM Genre";
-				$result=mysqli_query($connection,$sql);
+    <center>
+    <?php  if (isset($_SESSION['username'])) : ?>
+        <a>Welcome <?php echo "<i class='username'>".$_SESSION['username']."</i>"; ?></a>
+    <?php endif ?>
+    <a href="HomeV2.php"> Home</a>
+    <a href="MoviesPage.php"> Movies</a>
+    <a href="StudiosPage.php"> Studios</a>
+    
+    <a> Genres: </a>
+        <div class="dropdown-content">
+            <?php 
+                $sql="SELECT genre_name FROM Genre";
+                $result=mysqli_query($connection,$sql);
 
-				if ($result->num_rows > 0) {
-			    // output data of each row
-				    while($row = $result->fetch_assoc()) {
-				    	echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
-				    }
-				} else {
-				    echo "0 results";
-				}
-			?>
-		</div>
-	<?php  if (isset($_SESSION['username'])) : ?>
-		<a href="../index.php?logout='1'">logout</a>
-	<?php endif ?>
+                if ($result->num_rows > 0) {
+                // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo "<a href='CategoryPage.php?link=".$row['genre_name']."'>".$row['genre_name']."</a>";
+                    }
+                } else {
+                    echo "0 results";
+                }
+            ?>
+        </div>
+    <strong><a href="AddAnime.php"> Add Anime</a></strong>
+    <?php  if (isset($_SESSION['username'])) : ?>
+        <a id="logout" href="../index.php?logout='1'">logout</span></a>
+    <?php endif ?>
 </div>
 
 <?php
@@ -54,7 +56,6 @@
 		
     $get_anime = mysqli_query($connection,$sql1);
 
-    // Get original values first
     if(mysqli_num_rows($get_anime)>0){
         while($result = mysqli_fetch_assoc($get_anime)){
             $title_jap = $result["title_jap"];
@@ -94,7 +95,6 @@
 
 
         if(isset($_POST["button"])){
-            // If empty, display error, else assign new value to $new_title_jap
             if(empty($_POST["new_title_jap"])){
                 $new_title_jap_error = "This field must not be empty";
             } else{
@@ -192,8 +192,7 @@
                 $new_poster_link = $_POST["new_poster_link"];
                 $poster_link = $new_poster_link;
             }  
-             
-            // CHECK IF THERE IS AN EMPTY FIELD
+                   
             if($new_title_jap AND 
                 $new_title_eng AND
                 $new_score AND

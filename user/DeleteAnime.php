@@ -62,11 +62,7 @@
         $title_jap = $result["title_jap"];
 
         if(isset($_POST["button"])){
-            mysqli_query($connection, "DELETE FROM aired WHERE anime_id='$anime_id'");
-            mysqli_query($connection, "DELETE FROM created WHERE anime_id='$anime_id'");
-			mysqli_query($connection, "DELETE FROM licensed WHERE anime_id='$anime_id'");
-			mysqli_query($connection, "DELETE FROM classification WHERE anime_id='$anime_id'");
-            mysqli_query($connection, "DELETE FROM anime WHERE anime_id='$anime_id'");
+            mysqli_query($connection, "DELETE FROM Anime WHERE anime_id='$anime_id'");
 
             header("Location: HomeV2.php");
         }
