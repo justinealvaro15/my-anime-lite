@@ -52,9 +52,9 @@
 		INNER JOIN Licensed t4 ON t1.anime_id = t4.anime_id
 		INNER JOIN Studio r1 ON t3.studio_id = r1.studio_id
 		INNER JOIN Licensor r2 ON t4.lic_id = r2.lic_id
-        WHERE t1.anime_id = {$anime_id}";
+        WHERE t1.anime_id = '$anime_id'";
 		
-    $get_anime = mysqli_query($connection,$sql1);
+    $get_anime = mysqli_query($connection,$sql1) or die(mysqli_error($connection));
 
     if(mysqli_num_rows($get_anime)>0){
         while($result = mysqli_fetch_assoc($get_anime)){

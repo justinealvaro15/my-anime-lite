@@ -59,11 +59,10 @@
 		/* DISPLAY GENRE TITLE */
 		if(isset($_GET['link'])){$_SESSION['link'] = $_GET['link'];}
 		$query="SELECT * FROM Genre WHERE genre_name='". $_SESSION['link']."'";
-		$result=mysqli_query($connection,$query);	
-		$result1 = $result->fetch_assoc();
+		$result=mysqli_query($connection,$query) or die(mysqli_error($connection));	
 
 		echo "<h1>".$_SESSION['link']; 
-		echo "<a href='DeleteGenre.php?genre_name=".$result1["genre_name"]."'><span class='rename-delete'>Delete</a>&nbsp &nbsp &nbsp<a href='UpdateGenre.php?genre_name=".$result1["genre_name"]."'><span class='rename-delete'>Update</span></a></h1>";
+		echo "<a href='DeleteGenre.php?genre_name=".$_SESSION['link']."'><span class='rename-delete'>Delete</a>&nbsp &nbsp &nbsp<a href='UpdateGenre.php?genre_name=".$_SESSION['link']."'><span class='rename-delete'>Update</span></a></h1>";
 		/* DISPLAY GENRE DESCRIPTION */
 			if ($result->num_rows > 0) {
 			    // output data of each row
