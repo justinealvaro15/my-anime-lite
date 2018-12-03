@@ -94,8 +94,8 @@
     <div class="input-group">
         <label>Description:</label>
         
-        <div align="center">
-            <textarea font-family='Ubuntu' font-size="18px" rows="10" cols="67" name="new_genre_desc" wrap="soft" form="genre_form"><?php echo $genre_desc ?></textarea>
+        <div align="left">
+            <textarea font-family='Ubuntu' font-size="18px" rows="10" cols="50" name="new_genre_desc" wrap="soft" form="genre_form"><?php echo $genre_desc ?></textarea>
         </div>
         
         <!-- <input type="text" name="new_genre_desc" value="<?php echo $genre_desc ?>"> -->
